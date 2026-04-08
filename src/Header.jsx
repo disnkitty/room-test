@@ -1,4 +1,5 @@
-import Bell from "./Buttons/UserNotifications"
+import UserNotifications from "./Buttons/UserNotifications"
+
 
 
 function Header({userName}) {

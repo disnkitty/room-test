@@ -1,5 +1,5 @@
 import SearchInput from "./SearchInput"
-
+import RoomOptions from "./RoomOptions"
 
 function Content() {
     return (
