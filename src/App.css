@@ -1,0 +1,19 @@
+*{
+  box-sizing:border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center; /* по центру */
+  background: #ccc;
+}
+
+.app {
+  width: 375px; /* ширина как у телефона */
+  min-height: 100vh;
+  background: white;
+}
+
+
