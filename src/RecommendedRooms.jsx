@@ -1,9 +1,8 @@
-import RoomCard from "./RoomCard";
+import RoomCard from './RoomCard';
 
-
-  const cardData = [
+const cardData = [
   {
-    imageUrl: '/1room',
+    imageUrl: '/1room.svg',
     roomName: 'Ocean Meeting Room',
     peoples: '8-12 people',
     rating: '4.7',
@@ -11,10 +10,10 @@ import RoomCard from "./RoomCard";
     status: 'Available',
     type: 'All',
     isBook: true,
-    isLike: true
+    isLike: true,
   },
-  {    imageUrl: '/2room',
-
+  {
+    imageUrl: '/2room.svg',
     roomName: 'Forest Focus Room',
     peoples: '2-4 people',
     rating: '4.3',
@@ -22,10 +21,10 @@ import RoomCard from "./RoomCard";
     status: 'Available',
     type: 'Small',
     isBook: false,
-    isLike: true
+    isLike: true,
   },
-  {    imageUrl: '/3room',
-
+  {
+    imageUrl: '/3room.svg',
     roomName: 'British Library Hall',
     peoples: '6-8 people',
     rating: '4.9',
@@ -33,10 +32,10 @@ import RoomCard from "./RoomCard";
     status: 'Booked',
     type: 'Medium',
     isBook: true,
-    isLike: false
+    isLike: false,
   },
-  {    imageUrl: '/4room',
-
+  {
+    imageUrl: '/4room.svg',
     roomName: 'Skyline Event Suite',
     peoples: '20-30 people',
     rating: '4.9',
@@ -44,10 +43,10 @@ import RoomCard from "./RoomCard";
     status: 'Available',
     type: 'Large',
     isBook: false,
-    isLike: true
+    isLike: true,
   },
-  {    imageUrl: '/5room',
-
+  {
+    imageUrl: '/5room.svg',
     roomName: 'Mountain Peak Studio',
     peoples: '1-2 people',
     rating: '4.8',
@@ -55,73 +54,20 @@ import RoomCard from "./RoomCard";
     status: 'Available',
     type: 'Small',
     isBook: false,
-    isLike: false
+    isLike: false,
   },
-  {    imageUrl: '/6room',
-
-    roomName: 'Canyon Workshop',
-    peoples: '10-15 people',
-    rating: '4.6',
-    price: '$18 /hour',
-    status: 'Available',
-    type: 'All',
-    isBook: true,
-    isLike: true
-  },
-  {    imageUrl: '/7room',
-
-    roomName: 'Desert Oasis Lounge',
-    peoples: '4-6 people',
-    rating: '4.5',
-    price: '$15 /hour',
-    status: 'Available',
-    type: 'Medium',
-    isBook: false,
-    isLike: false
-  },
-  {    imageUrl: '/8room',
-
-    roomName: 'Arctic Silence Pod',
-    peoples: '1 person',
-    rating: '4.2',
-    price: '$5 /hour',
-    status: 'Booked',
-    type: 'Small',
-    isBook: true,
-    isLike: true
-  },
-  {    imageUrl: '/9room',
-
-    roomName: 'Bamboo Zen Garden',
-    peoples: '4-8 people',
-    rating: '5.0',
-    price: '$22 /hour',
-    status: 'Available',
-    type: 'Medium',
-    isBook: false,
-    isLike: true
-  },
-  {    imageUrl: '/10room',
-
-    roomName: 'Neon City Lab',
-    peoples: '6-10 people',
-    rating: '4.4',
-    price: '$20 /hour',
-    status: 'Available',
-    type: 'All',
-    isBook: false,
-    isLike: false
-  }
 ];
 function RecommendedRooms() {
-    return (
-        <div className="recommended-rooms">
-        <p>Recommended rooms</p>
-        <p>View All</p>
-        {/* <RoomCard name={'sd'} peoples={'sd'} rating={'sd'}/> */}
-            {cardData.map(el => (<RoomCard roomName= {el.roomName}, peoples={el.peoples},  rating={el.rating} , price={el.price}, status={el.status}, type={el.type}, isBook={el.isBook}, isLike={el.isLike} />))}
-        </div>
-    )
+  return (
+    <div className="recommended-rooms">
+      <p>Recommended rooms</p>
+      <p>View All</p>
+
+      {cardData.map((obj) => (
+        <RoomCard key={obj.roomName} obj={obj} />
+      ))}
+    </div>
+  );
 }
 
-export default RecommendedRooms
+export default RecommendedRooms;
