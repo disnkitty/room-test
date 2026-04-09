@@ -15,5 +15,13 @@ body {
   min-height: 100vh;
   background: white;
 }
+.header{
+  display: flex;
+}
+.search-input{
+  display: flex;
+}
 
-
+.footer {
+  display: flex;
+}
