@@ -1,5 +1,5 @@
-*{
-  box-sizing:border-box;
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
@@ -15,13 +15,13 @@ body {
   min-height: 100vh;
   background: white;
 }
-.header{
+.header {
   display: flex;
 }
-.search-input{
+.search-input {
   display: flex;
 }
 
-.footer {
+.Footer {
   display: flex;
 }
