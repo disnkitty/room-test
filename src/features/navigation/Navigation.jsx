@@ -1,69 +1,45 @@
-import IconHouse from '../../ui/IconHouse';
-import IconSearch from '../../ui/IconSearch';
-import Favorites from '../favorites/Favorites';
-import { useState } from 'react';
-
-const [navigation, setNavigation] = useState({ color: 'white', thereIsText: false});
-
- function handleSetNavigation(){
-setNavigation((prev) =>( {color: 'black', thereIsText: true })
-)
-
-}
-
-function Navigation() {
-  return (
-    <div>
-      <Button icon=<IconHouse /> size='primary' onClick={handleSetNavigation} text={thereIsText && 'Home'} />
-      <Button icon=<IconSearch /> size='primary' onClick={handleSetNavigation} text={thereIsText && 'Search'}  />
-      <Button icon=<Favorites /> size='primary' onClick={handleSetNavigation} text={thereIsText && 'Favorites'}  />
-      <Button icon=<IconUser /> size='primary' onClick={handleSetNavigation} text={thereIsText && 'Profile'} />
-    </div>
-  );
-}
-
-export default Navigation;
-
-maybe
 import { useState } from 'react';
 import IconHouse from '../../ui/IconHouse';
 import IconSearch from '../../ui/IconSearch';
-import Favorites from '../favorites/Favorites';
-import IconUser from '../../ui/IconUser'; // Этот импорт отсутствовал
+import IconLike from '../../ui/IconLike';
+import IconPerson from '../../ui/IconPerson';
 
-// 1. Выносим конфигурацию вкладок (массив объектов)
-// Название константы заглавными буквами указывает на статические данные
 const TABS = [
-  { id: 'home', label: 'Home', icon: <IconHouse /> },
-  { id: 'search', label: 'Search', icon: <IconSearch /> },
-  { id: 'favorites', label: 'Favorites', icon: <Favorites /> },
-  { id: 'profile', label: 'Profile', icon: <IconUser /> },
+  { id: 'home', label: 'Home', Icon: IconHouse },
+  { id: 'search', label: 'Search', Icon: IconSearch },
+  { id: 'favorites', label: 'Favorites', Icon: IconLike },
+  { id: 'profile', label: 'Profile', Icon: IconPerson },
 ];
 
-
 function Navigation() {
-  // 2. Храним ID активной вкладки. 
-  // String — стринг — строковый тип данных. По умолчанию 'home'.
   const [activeTab, setActiveTab] = useState('home');
 
   return (
-    <nav className="bottom-navigation">
+    <nav
+      className="flex w-full max-w-[345px] items-center justify-between gap-1 rounded-pill bg-white px-2 py-2 shadow-nav"
+      aria-label="Main"
+    >
       {TABS.map((tab) => {
-        // 3. Вычисляем флаг активности для текущей кнопки
         const isActive = activeTab === tab.id;
+        const { Icon } = tab;
 
         return (
-          <Button
+          <button
             key={tab.id}
-            icon={tab.icon}
-            size="primary"
-            // Передаем разные классы в зависимости от состояния
-            className={isActive ? 'nav-btn active' : 'nav-btn'} 
-            // Обновляем состояние при клике
+            type="button"
             onClick={() => setActiveTab(tab.id)}
-            // Показываем текст только если кнопка активна
-            text={isActive ? tab.label : null}
-          />
+            className={`flex items-center justify-center rounded-pill transition-colors ${
+              isActive
+                ? 'gap-2 bg-cinder px-4 py-3 text-white [&_path]:fill-white'
+                : 'p-3 text-cinder [&_path]:fill-cinder'
+            }`}
+            aria-current={isActive ? 'page' : undefined}
+          >
+            <Icon size="md" />
+            {isActive ? (
+              <span className="text-base font-medium leading-none">{tab.label}</span>
+            ) : null}
+          </button>
         );
       })}
     </nav>

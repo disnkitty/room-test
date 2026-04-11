@@ -1,11 +1,7 @@
 import IconLike from '../../ui/IconLike';
 
 function Favorites() {
-  return (
-    <button>
-      <Button icon={<IconLike />} size="primary" color="white" />
-    </button>
-  );
+  return <IconLike />;
 }
 
 export default Favorites;

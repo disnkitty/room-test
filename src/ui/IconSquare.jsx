@@ -1,11 +1,11 @@
-import Square from './assets/icons/Name=Square.svg?react'; 
+import Square from '../assets/icons/Name=Square.svg?react';
 
 function IconSquare() {
-    return (
-        <button className="notification-btn" type="button">
-            <Square />
-        </button>
-    );
+  return (
+    <span className="notification-btn" role="presentation">
+      <Square />
+    </span>
+  );
 }
 
 export default IconSquare;

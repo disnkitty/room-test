@@ -4,8 +4,8 @@ import Footer from './components/Footer';
 
 function RoomList() {
   return (
-    <div>
-      <Header />
+    <div className="relative flex min-h-screen flex-1 flex-col">
+      <Header userName="Barbara" />
       <Content />
       <Footer />
     </div>

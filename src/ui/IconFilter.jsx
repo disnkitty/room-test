@@ -1,11 +1,19 @@
-import Filter from './assets/icons/Name=Filter.svg?react'; 
+import Filter from '../assets/icons/Name=Filter.svg?react';
 
-function IconNotifications() {
-    return (
-        <button className="notification-btn" type="button">
-            <Filter />
-        </button>
-    );
+const sizeClass = {
+  md: '[&>svg]:h-6 [&>svg]:w-6',
+  sm: '[&>svg]:h-4 [&>svg]:w-4',
+};
+
+function IconFilter({ className = '', size = 'md' }) {
+  return (
+    <span
+      className={`inline-flex shrink-0 text-cinder ${sizeClass[size]} ${className}`}
+      role="presentation"
+    >
+      <Filter />
+    </span>
+  );
 }
 
-export default IconNotifications;
+export default IconFilter;

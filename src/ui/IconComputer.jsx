@@ -1,11 +1,11 @@
-import Computer from './assets/icons/Name=Computer.svg?react'; 
+import Computer from '../assets/icons/Name=Computer.svg?react';
 
 function IconComputer() {
-    return (
-        <button className="notification-btn" type="button">
-            <Computer />
-        </button>
-    );
+  return (
+    <span className="notification-btn" role="presentation">
+      <Computer />
+    </span>
+  );
 }
 
 export default IconComputer;

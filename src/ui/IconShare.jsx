@@ -1,11 +1,11 @@
-import Share from './assets/icons/Name=Share.svg?react'; 
+import Share from '../assets/icons/Name=Share.svg?react';
 
 function IconShare() {
-    return (
-        <button className="notification-btn" type="button">
-            <Share />
-        </button>
-    );
+  return (
+    <span className="notification-btn" role="presentation">
+      <Share />
+    </span>
+  );
 }
 
 export default IconShare;

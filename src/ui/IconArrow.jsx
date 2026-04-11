@@ -1,11 +1,11 @@
-import Arrow from './assets/icons/Name=Arrow.svg?react'; 
+import Arrow from '../assets/icons/Name=Arrow.svg?react';
 
 function IconArrow() {
-    return (
-        <button className="notification-btn" type="button">
-            <Arrow />
-        </button>
-    );
+  return (
+    <span className="notification-btn" role="presentation">
+      <Arrow />
+    </span>
+  );
 }
 
 export default IconArrow;

@@ -1,11 +1,19 @@
-import People from './assets/icons/Name=People.svg?react'; 
+import People from '../assets/icons/Name=People.svg?react';
 
-function IconPeople() {
-    return (
-        <button className="notification-btn" type="button">
-            <People />
-        </button>
-    );
+const sizeClass = {
+  md: '[&>svg]:h-6 [&>svg]:w-6',
+  sm: '[&>svg]:h-4 [&>svg]:w-4',
+};
+
+function IconPeople({ className = '', size = 'md' }) {
+  return (
+    <span
+      className={`inline-flex shrink-0 text-cinder ${sizeClass[size]} ${className}`}
+      role="presentation"
+    >
+      <People />
+    </span>
+  );
 }
 
 export default IconPeople;

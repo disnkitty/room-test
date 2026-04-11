@@ -1,11 +1,11 @@
-import Error from './assets/icons/Name=Error.svg?react'; 
+import Error from '../assets/icons/Name=Error.svg?react';
 
 function IconError() {
-    return (
-        <button className="notification-btn" type="button">
-            <Error />
-        </button>
-    );
+  return (
+    <span className="notification-btn" role="presentation">
+      <Error />
+    </span>
+  );
 }
 
 export default IconError;

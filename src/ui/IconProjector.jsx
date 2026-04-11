@@ -1,11 +1,11 @@
-import Projector from './assets/icons/Name=Projector.svg?react'; 
+import Projector from '../assets/icons/Name=Projector.svg?react';
 
 function IconProjector() {
-    return (
-        <button className="notification-btn" type="button">
-            <Projector />
-        </button>
-    );
+  return (
+    <span className="notification-btn" role="presentation">
+      <Projector />
+    </span>
+  );
 }
 
 export default IconProjector;

@@ -1,11 +1,11 @@
-import Battery from './assets/icons/Name=Battery.svg?react'; 
+import Battery from '../assets/icons/Name=Battery.svg?react';
 
 function IconBattery() {
-    return (
-        <button className="notification-btn" type="button">
-            <Battery />
-        </button>
-    );
+  return (
+    <span className="notification-btn" role="presentation">
+      <Battery />
+    </span>
+  );
 }
 
 export default IconBattery;

@@ -1,21 +1,10 @@
-import { useState } from 'react';
-import Header from './Header';
-import Content from './Content';
-import Footer from './Footer';
-
-import './App.css';
+import RoomList from '../pages/RoomList/RoomList';
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <div className="app">
-        <Header userName="User" />
-        <Content />
-        <Footer />
-      </div>
-    </>
+    <div className=" flex min-h-screen w-full flex-col bg-[#F2F2F2] shadow-sm">
+      <RoomList />
+    </div>
   );
 }
 

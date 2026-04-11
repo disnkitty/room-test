@@ -1,11 +1,19 @@
-import House from './assets/icons/Name=House.svg?react'; 
+import House from '../assets/icons/Name=House.svg?react';
 
-function IconHouse() {
-    return (
-        <button className="notification-btn" type="button">
-            <House />
-        </button>
-    );
+const sizeClass = {
+  md: '[&>svg]:h-6 [&>svg]:w-6',
+  sm: '[&>svg]:h-4 [&>svg]:w-4',
+};
+
+function IconHouse({ className = '', size = 'md' }) {
+  return (
+    <span
+      className={`inline-flex shrink-0 text-cinder ${sizeClass[size]} ${className}`}
+      role="presentation"
+    >
+      <House />
+    </span>
+  );
 }
 
 export default IconHouse;

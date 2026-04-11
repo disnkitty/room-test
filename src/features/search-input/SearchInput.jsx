@@ -1,14 +1,17 @@
-import IconSearch from "../../ui/IconSearch";
-import Filter from "../filters/Filter";
-// import InputFilter from './Buttons/InputFilter';
-
-
+import IconSearch from '../../ui/IconSearch';
+import Filter from '../filters/Filter';
 
 function SearchInput() {
   return (
-    <div className="search-input">
-      <IconSearch />
-      <input type="text" placeholder="Search meeting room…" />
+    <div className="flex h-12 w-full items-center gap-3 rounded-pill bg-white px-3">
+      <IconSearch className="shrink-0" />
+      <input
+        type="search"
+        name="room-search"
+        placeholder="Search meeting room…"
+        className="min-w-0 flex-1 border-0 bg-transparent text-sm font-normal leading-[150%] text-cinder placeholder:text-mist focus:outline-none focus:ring-0"
+        autoComplete="off"
+      />
       <Filter />
     </div>
   );

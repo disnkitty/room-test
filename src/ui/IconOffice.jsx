@@ -1,11 +1,11 @@
-import Office from './assets/icons/Name=Office.svg?react'; 
+import Office from '../assets/icons/Name=Office.svg?react';
 
 function IconOffice() {
-    return (
-        <button className="notification-btn" type="button">
-            <Office />
-        </button>
-    );
+  return (
+    <span className="notification-btn" role="presentation">
+      <Office />
+    </span>
+  );
 }
 
 export default IconOffice;

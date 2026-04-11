@@ -1,11 +1,11 @@
-import Case from './assets/icons/Name=Case.svg?react'; 
+import Case from '../assets/icons/Name=Case.svg?react';
 
 function IconCase() {
-    return (
-        <button className="notification-btn" type="button">
-            <Case />
-        </button>
-    );
+  return (
+    <span className="notification-btn" role="presentation">
+      <Case />
+    </span>
+  );
 }
 
 export default IconCase;

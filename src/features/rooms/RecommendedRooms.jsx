@@ -1,75 +1,46 @@
-import RoomCard from "./RoomCard";
+import RoomCard from './RoomCard';
 
 const cardData = [
-  {
-    imageUrl: '/1room.svg',
-    roomName: 'Ocean Meeting Room',
-    peoples: '8-12',
-    rating: '4.7',
-    price: '12',
-    status: 'Available',
-    type: 'All',
-    isBook: true,
-    isLike: true,
-  },
   {
     imageUrl: '/2room.svg',
     roomName: 'Forest Focus Room',
     peoples: '2-4',
     rating: '4.3',
-    price: '10',
-    status: 'Available',
-    type: 'Small',
-    isBook: false,
-    isLike: true,
   },
   {
     imageUrl: '/3room.svg',
-    roomName: 'British Library Hall',
+    roomName: 'British Room',
     peoples: '6-8',
     rating: '4.9',
-    price: '25',
-    status: 'Booked',
-    type: 'Medium',
-    isBook: true,
-    isLike: false,
-  },
-  {
-    imageUrl: '/4room.svg',
-    roomName: 'Skyline Event Suite',
-    peoples: '20-30',
-    rating: '4.9',
-    price: '45',
-    status: 'Available',
-    type: 'Large',
-    isBook: false,
-    isLike: true,
   },
   {
     imageUrl: '/5room.svg',
-    roomName: 'Mountain Peak Studio',
+    roomName: 'Meeting Room',
     peoples: '1-2',
-    rating: '4.8',
-    price: '8',
-    status: 'Available',
-    type: 'Small',
-    isBook: false,
-    isLike: false,
+    rating: '4.9',
   },
 ];
+
 function RecommendedRooms() {
   return (
-    <div className="recommended-rooms">
-      
-      <button>
-        Recommended rooms
-      </button>
-      <p>View All</p>
-
-      {cardData.map((obj) => (
-        <RoomCard key={obj.roomName} obj={obj} />
-      ))}
-    </div>
+    <section className="flex flex-col gap-4">
+      <div className="flex items-center justify-between gap-4 pr-0">
+        <h2 className="text-base font-semibold leading-none text-cinder">
+          Recommended rooms
+        </h2>
+        <button
+          type="button"
+          className="border-0 bg-transparent p-0 text-sm font-normal leading-[150%] text-mist"
+        >
+          View All
+        </button>
+      </div>
+      <div className="-mx-4 flex gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        {cardData.map((obj) => (
+          <RoomCard key={obj.roomName} obj={obj} />
+        ))}
+      </div>
+    </section>
   );
 }
 
