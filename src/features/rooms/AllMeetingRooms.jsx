@@ -1,33 +1,9 @@
 import DetailRoomCard from './DetailRoomCard';
 
-const cardData = [
-  {
-    imageUrl: '/1room.svg',
-    roomName: 'Ocean Meeting Room',
-    peoples: '8-12',
-    rating: '4.7',
-    price: '12',
-    status: 'Available',
-  },
-  {
-    imageUrl: '/4room.svg',
-    roomName: 'Skyline Event Room',
-    peoples: '2-4',
-    rating: '4.9',
-    price: '8',
-    status: 'Available',
-  },
-  {
-    imageUrl: '/6room.svg',
-    roomName: 'Berlin Conference Room',
-    peoples: '12-16',
-    rating: '4.3',
-    price: '16',
-    status: 'Available',
-  },
-];
+import { useRooms } from '../../../context/RoomsContext';
 
-function AllMeetingRooms() {
+function  AllMeetingRooms() {
+  const { rooms } = useRooms();
   return (
     <section className="flex flex-col gap-4">
       <div className="flex items-end justify-between gap-4">
@@ -42,7 +18,7 @@ function AllMeetingRooms() {
         </button>
       </div>
       <div className="-mx-4 flex gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        {cardData.map((obj) => (
+        {rooms.map((obj) => (
           <DetailRoomCard key={obj.roomName} obj={obj} />
         ))}
       </div>

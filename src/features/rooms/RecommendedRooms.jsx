@@ -1,27 +1,8 @@
 import RoomCard from './RoomCard';
-
-const cardData = [
-  {
-    imageUrl: '/2room.svg',
-    roomName: 'Forest Focus Room',
-    peoples: '2-4',
-    rating: '4.3',
-  },
-  {
-    imageUrl: '/3room.svg',
-    roomName: 'British Room',
-    peoples: '6-8',
-    rating: '4.9',
-  },
-  {
-    imageUrl: '/5room.svg',
-    roomName: 'Meeting Room',
-    peoples: '1-2',
-    rating: '4.9',
-  },
-];
+import { useRooms } from '../../../context/RoomsContext';
 
 function RecommendedRooms() {
+  const { rooms } = useRooms();
   return (
     <section className="flex flex-col gap-4">
       <div className="flex items-center justify-between gap-4 pr-0">
@@ -36,7 +17,7 @@ function RecommendedRooms() {
         </button>
       </div>
       <div className="-mx-4 flex gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        {cardData.map((obj) => (
+        {rooms.slice(5,9).map((obj) => (
           <RoomCard key={obj.roomName} obj={obj} />
         ))}
       </div>

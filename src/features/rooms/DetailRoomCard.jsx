@@ -4,22 +4,26 @@ import IconLike from '../../ui/IconLike';
 import IconPeople from '../../ui/IconPeople';
 import IconStar from '../../ui/IconStar';
 import Button from '../../ui/Button';
-
-function DetailRoomCard({ obj }) {
+function DetailRoomCard({ obj, onNavigateToDetail, onBook, onLike }) {
   const isAvailable = obj.status === 'Available';
 
   return (
     <article className="flex w-[267px] shrink-0 flex-col overflow-hidden rounded-2xl bg-white shadow-card">
-      <div className="relative h-[157px] w-full shrink-0 overflow-hidden rounded-t-2xl">
+      <div
+        role="button"
+        // onClick={}
+
+        className="relative h-[157px] w-full shrink-0 overflow-hidden rounded-t-2xl cursor-pointer"
+      >
         <img
           src={obj.imageUrl}
           alt={obj.roomName}
           className="h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-black/20" aria-hidden />
+
         <button
           type="button"
-          aria-label="Add to favorites"
           className="absolute right-2 top-2 inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/70 text-cinder backdrop-blur-[2px]"
         >
           <IconLike className="[&>svg]:h-5 [&>svg]:w-5" />
@@ -28,10 +32,11 @@ function DetailRoomCard({ obj }) {
 
       <div className="flex flex-col gap-8 px-2 pb-2 pt-3">
         <div className="flex flex-col gap-3">
-          <h3 className="text-base font-medium leading-none text-cinder">
+          <h3 className="text-base font-medium leading-none text-cinder cursor-pointer w-fit">
             {obj.roomName}
           </h3>
-          <div className="flex flex-wrap items-center gap-1">
+
+          <div className="flex flex-wrap items-center gap-1 pointer-events-none select-none">
             <span className="inline-flex h-6 items-center justify-center gap-1 rounded-pill bg-concrete px-2 py-1">
               <IconStar size="sm" variant="rating" />
               <span className="text-[10px] font-medium leading-none text-cinder">
@@ -58,7 +63,7 @@ function DetailRoomCard({ obj }) {
         </div>
 
         <div className="flex items-center justify-between gap-3">
-          <div className="flex items-baseline gap-1">
+          <div className="flex items-baseline gap-1 pointer-events-none select-none">
             <span className="text-base font-medium leading-none text-cinder">
               ${obj.price}
             </span>
@@ -66,9 +71,9 @@ function DetailRoomCard({ obj }) {
               /hour
             </span>
           </div>
+
           <Button
             type="button"
-            disabled={!isAvailable}
             className={`flex h-10 w-[169px] shrink-0 items-center justify-center rounded-pill px-5 text-base font-medium leading-none transition-opacity ${
               isAvailable
                 ? 'border-0 bg-chartreuse text-cinder active:opacity-90'
