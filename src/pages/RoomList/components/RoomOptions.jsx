@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import RoomCategory from './RoomCategory';
-
+import AllMeetingRooms from '../../../features/rooms/AllMeetingRooms';
+import RecommendedRooms from '../../../features/rooms/RecommendedRooms';
 const ROOM_CATEGORIES = [
   'All rooms',
   'Small (2-4)',
@@ -8,19 +9,23 @@ const ROOM_CATEGORIES = [
   'Large (12+)',
 ];
 
-function RoomOptions() {
+function RoomOptions({searchQuery}) {
   const [active, setActive] = useState(ROOM_CATEGORIES[0]);
 
   return (
-    <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-0 pt-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-      {ROOM_CATEGORIES.map((name) => (
-        <RoomCategory
-          key={name}
-          name={name}
-          isActive={active === name}
-          onSelect={() => setActive(name)}
-        />
-      ))}
+    <div className="flex flex-col gap-1">
+      <div className="-mx-4 flex gap-2 overflow-x-auto px-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        {ROOM_CATEGORIES.map((name) => (
+          <RoomCategory
+            key={name}
+            name={name}
+            isActive={active === name}
+            onSelect={() => setActive(name)}
+          />
+        ))}
+      </div>
+      <RecommendedRooms activeCategory={active} searchQuery={searchQuery} />  {/* передаём */}
+      <AllMeetingRooms activeCategory={active} searchQuery={searchQuery} />
     </div>
   );
 }

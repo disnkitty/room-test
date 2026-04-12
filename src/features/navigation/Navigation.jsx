@@ -28,17 +28,19 @@ function Navigation() {
             key={tab.id}
             type="button"
             onClick={() => setActiveTab(tab.id)}
-            className={`flex items-center justify-center rounded-pill transition-colors ${
+            className={`flex h-11 items-center justify-center rounded-pill transition-all duration-300 ${
               isActive
-                ? 'gap-2 bg-cinder px-4 py-3 text-white [&_path]:fill-white'
-                : 'p-3 text-cinder [&_path]:fill-cinder'
+                ? 'gap-2 bg-cinder px-5 text-white [&_path]:fill-white'
+                : 'w-11 text-cinder [&_path]:fill-cinder'
             }`}
             aria-current={isActive ? 'page' : undefined}
           >
             <Icon size="md" />
-            {isActive ? (
-              <span className="text-base font-medium leading-none">{tab.label}</span>
-            ) : null}
+            {isActive && (
+              <span className="whitespace-nowrap text-base font-medium leading-none">
+                {tab.label}
+              </span>
+            )}
           </button>
         );
       })}

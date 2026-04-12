@@ -8,7 +8,7 @@ const sizeClass = {
 function IconBell({ className = '', size = 'md' }) {
   return (
     <span
-      className={`inline-flex shrink-0 text-cinder ${sizeClass[size]} ${className}`}
+      className={` inline-flex shrink-0 text-cinder ${sizeClass[size]} ${className}`}
       role="presentation"
     >
       <Bell />

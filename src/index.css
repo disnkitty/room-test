@@ -4,6 +4,7 @@
 
 @layer base {
   html {
+   font-size:87%;
     -webkit-tap-highlight-color: transparent;
   }
 
