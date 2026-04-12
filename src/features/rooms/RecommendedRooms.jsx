@@ -18,7 +18,7 @@ function RecommendedRooms() {
       </div>
       <div className="-mx-4 flex gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {rooms.slice(5,9).map((obj) => (
-          <RoomCard key={obj.roomName} obj={obj} />
+          <RoomCard key={obj.id} obj={obj} />
         ))}
       </div>
     </section>

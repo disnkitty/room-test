@@ -3,6 +3,7 @@ import { createContext, useContext, useState } from 'react';
 const RoomsContext = createContext(null);
 const cardData = [
   {
+    id: 1,
     imageUrl: '/1room.svg',
     roomName: 'Ocean Meeting Room',
     address: 'Lviv, Shevchenka St., Ukraine, Floor 1',
@@ -12,8 +13,7 @@ const cardData = [
     status: 'Available',
     isBooked: false,
     isLiked: false,
-    description:
-      'This room has a wide ocean view. It is designed for productive meetings. Natural light fills the space throughout the day. The atmosphere is calm and focused.',
+    description: 'This room has a wide ocean view. It is designed for productive meetings. Natural light fills the space throughout the day. The atmosphere is calm and focused.',
     bookingsCount: 24,
     squareMeters: 45,
     projector: true,
@@ -25,6 +25,7 @@ const cardData = [
     bedCoffee: false,
   },
   {
+    id: 2,
     imageUrl: '/2room.svg',
     roomName: 'Skyline Meeting Room',
     address: 'Lviv, Shevchenka St., Ukraine, Floor 2',
@@ -34,8 +35,7 @@ const cardData = [
     status: 'Available',
     isBooked: false,
     isLiked: false,
-    description:
-      'This room offers a panoramic city skyline view. It is suitable for small team discussions. The space is quiet and minimalistic. It supports focused work sessions.',
+    description: 'This room offers a panoramic city skyline view. It is suitable for small team discussions. The space is quiet and minimalistic. It supports focused work sessions.',
     bookingsCount: 18,
     squareMeters: 30,
     projector: true,
@@ -47,6 +47,7 @@ const cardData = [
     bedCoffee: false,
   },
   {
+    id: 3,
     imageUrl: '/3room.svg',
     roomName: 'Berlin Conference Room',
     address: 'Lviv, Shevchenka St., Ukraine, Floor 1',
@@ -56,8 +57,7 @@ const cardData = [
     status: 'Available',
     isBooked: false,
     isLiked: false,
-    description:
-      'This room is built for large meetings. It has a formal business setup. The space includes modern equipment. It is ideal for presentations and conferences.',
+    description: 'This room is built for large meetings. It has a formal business setup. The space includes modern equipment. It is ideal for presentations and conferences.',
     bookingsCount: 11,
     squareMeters: 70,
     projector: true,
@@ -69,6 +69,7 @@ const cardData = [
     bedCoffee: false,
   },
   {
+    id: 4,
     imageUrl: '/4room.svg',
     roomName: 'Minimal Work Room',
     address: 'Lviv, Shevchenka St., Ukraine, Floor 2',
@@ -78,8 +79,7 @@ const cardData = [
     status: 'Available',
     isBooked: false,
     isLiked: false,
-    description:
-      'This room is designed for deep focus. It has a simple and clean layout. Distractions are minimized. It is perfect for individual or small tasks.',
+    description: 'This room is designed for deep focus. It has a simple and clean layout. Distractions are minimized. It is perfect for individual or small tasks.',
     bookingsCount: 33,
     squareMeters: 22,
     projector: false,
@@ -91,6 +91,7 @@ const cardData = [
     bedCoffee: false,
   },
   {
+    id: 5,
     imageUrl: '/5room.svg',
     roomName: 'Creative Studio Room',
     address: 'Lviv, Shevchenka St., Ukraine, Floor 3',
@@ -100,8 +101,7 @@ const cardData = [
     status: 'Available',
     isBooked: false,
     isLiked: false,
-    description:
-      'This room is designed for creative teams. It supports brainstorming sessions. The layout is flexible and modern. It inspires collaboration and ideas.',
+    description: 'This room is designed for creative teams. It supports brainstorming sessions. The layout is flexible and modern. It inspires collaboration and ideas.',
     bookingsCount: 40,
     squareMeters: 50,
     projector: true,
@@ -113,6 +113,7 @@ const cardData = [
     bedCoffee: false,
   },
   {
+    id: 6,
     imageUrl: '/6room.svg',
     roomName: 'Executive Room',
     address: 'Lviv, Shevchenka St., Ukraine, Floor 4',
@@ -122,8 +123,7 @@ const cardData = [
     status: 'Available',
     isBooked: false,
     isLiked: false,
-    description:
-      'This room is built for executive meetings. It has a premium interior design. The space is quiet and professional. It supports important decision making.',
+    description: 'This room is built for executive meetings. It has a premium interior design. The space is quiet and professional. It supports important decision making.',
     bookingsCount: 15,
     squareMeters: 60,
     projector: true,
@@ -135,6 +135,7 @@ const cardData = [
     bedCoffee: false,
   },
   {
+    id: 7,
     imageUrl: '/7room.svg',
     roomName: 'Startup Hub Room',
     address: 'Lviv, Shevchenka St., Ukraine, Floor 2',
@@ -144,8 +145,7 @@ const cardData = [
     status: 'Available',
     isBooked: false,
     isLiked: false,
-    description:
-      'This room is designed for startup teams. It encourages collaboration and fast thinking. The environment is flexible and modern. It supports daily standups and planning.',
+    description: 'This room is designed for startup teams. It encourages collaboration and fast thinking. The environment is flexible and modern. It supports daily standups and planning.',
     bookingsCount: 27,
     squareMeters: 35,
     projector: true,
@@ -157,6 +157,7 @@ const cardData = [
     bedCoffee: false,
   },
   {
+    id: 8,
     imageUrl: '/8room.svg',
     roomName: 'Luxury Lounge Room',
     address: 'Lviv, Shevchenka St., Ukraine, Floor 5',
@@ -166,8 +167,7 @@ const cardData = [
     status: 'Available',
     isBooked: false,
     isLiked: false,
-    description:
-      'This room has a luxury lounge design. It is comfortable and spacious. The interior is premium and elegant. It is suitable for high-end meetings.',
+    description: 'This room has a luxury lounge design. It is comfortable and spacious. The interior is premium and elegant. It is suitable for high-end meetings.',
     bookingsCount: 9,
     squareMeters: 80,
     projector: true,
@@ -179,6 +179,7 @@ const cardData = [
     bedCoffee: true,
   },
   {
+    id: 9,
     imageUrl: '/9room.svg',
     roomName: 'Cozy Small Room',
     address: 'Lviv, Shevchenka St., Ukraine, Floor 1',
@@ -188,8 +189,7 @@ const cardData = [
     status: 'Available',
     isBooked: false,
     isLiked: false,
-    description:
-      'This room is small and cozy. It is suitable for private calls. The environment is quiet and simple. It helps to stay concentrated.',
+    description: 'This room is small and cozy. It is suitable for private calls. The environment is quiet and simple. It helps to stay concentrated.',
     bookingsCount: 52,
     squareMeters: 18,
     projector: false,
@@ -201,6 +201,7 @@ const cardData = [
     bedCoffee: false,
   },
   {
+    id: 10,
     imageUrl: '/10room.svg',
     roomName: 'Innovation Lab Room',
     address: 'Lviv, Shevchenka St., Ukraine, Floor 3',
@@ -210,8 +211,7 @@ const cardData = [
     status: 'Available',
     isBooked: false,
     isLiked: false,
-    description:
-      'This room is designed for innovation and experiments. It supports technical workshops. The environment is modern and flexible. It is ideal for prototyping ideas.',
+    description: 'This room is designed for innovation and experiments. It supports technical workshops. The environment is modern and flexible. It is ideal for prototyping ideas.',
     bookingsCount: 21,
     squareMeters: 75,
     projector: true,
@@ -221,7 +221,7 @@ const cardData = [
     jacuzzi: false,
     cleaningService: true,
     bedCoffee: false,
-  },
+  }
 ];
 export function RoomsProvider({ children }) {
   const [rooms, setRooms] = useState(cardData);

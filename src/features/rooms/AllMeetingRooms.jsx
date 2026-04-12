@@ -19,7 +19,7 @@ function  AllMeetingRooms() {
       </div>
       <div className="-mx-4 flex gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {rooms.map((obj) => (
-          <DetailRoomCard key={obj.roomName} obj={obj} />
+          <DetailRoomCard key={obj.id} obj={obj} />
         ))}
       </div>
     </section>

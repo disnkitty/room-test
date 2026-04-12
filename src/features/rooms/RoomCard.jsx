@@ -43,7 +43,7 @@ function RoomCard({ obj, onClick }) {
           <div className="inline-flex h-6 items-center justify-center gap-1 rounded-pill bg-concrete px-2 py-1">
             <IconStar size="sm" variant="rating" />
             <span className="text-[10px] font-medium leading-none text-cinder">
-              {obj.rating}
+              {obj.rating} 
             </span>
           </div>
         </div>
