@@ -1,4 +1,5 @@
 import Button from "../../../ui/Button";
+import { Link } from 'react-router-dom';
 
 function Footer({ obj }) {
   return (
@@ -10,9 +11,12 @@ function Footer({ obj }) {
           <span className="text-sm text-mist">/hour</span>
         </div>
       </div>
-      <Button className="h-12 w-[200px] rounded-pill bg-chartreuse text-base font-medium text-cinder">
+      <Link to={`/rooms/${obj?.id}/date`}>
+        <Button className="h-12 w-[200px] rounded-pill bg-chartreuse text-base font-medium text-cinder">
         Book Now
       </Button>
+      </Link>
+      
     </div>
   );
 }

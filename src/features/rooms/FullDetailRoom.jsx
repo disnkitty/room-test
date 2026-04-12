@@ -6,8 +6,11 @@ import IconArrow from '../../ui/IconArrow';
 import IconStar from '../../ui/IconStar';
 import IconCase from '../../ui/IconCase';
 import Button from '../../ui/Button';
+import { useNavigate } from 'react-router-dom';
+
 
 function FullDetailRoom({ obj }) {
+  const navigate = useNavigate();
   return (
     <div className="flex flex-col">
 
@@ -22,7 +25,7 @@ function FullDetailRoom({ obj }) {
 
        
         <div className="absolute left-4 right-4 top-4 flex items-center justify-between">
-          <button className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/70 backdrop-blur-[2px]">
+          <button   onClick={() => navigate(-1)} className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/70 backdrop-blur-[2px]">
             <IconArrow />
           </button>
           <div className="flex gap-2">
@@ -71,7 +74,7 @@ function FullDetailRoom({ obj }) {
 
         
         <div className="flex flex-col gap-3 border-t border-concrete pt-4">
-          <p className="line-clamp-3 text-sm font-normal leading-relaxed text-cinder">
+          <p className="line-clamp-2 text-sm font-normal leading-relaxed text-cinder">
             {obj?.description}
           </p>
           <Button className="flex h-[38px] w-full items-center justify-center rounded-pill bg-concrete text-sm font-medium text-cinder">

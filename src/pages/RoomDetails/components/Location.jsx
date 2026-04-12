@@ -11,7 +11,7 @@ function Location({ obj }) {
       </p>
       <div className="relative flex h-[240px] w-full items-center justify-center overflow-hidden rounded-2xl bg-concrete">
         <img
-          src="./location.svg"
+          src="/location.svg"
           alt="location map"
           className="h-full w-full object-cover"
         />
