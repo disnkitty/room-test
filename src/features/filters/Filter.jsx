@@ -1,4 +1,4 @@
-import IconFilter from '../../ui/IconFilter';
+import IconFilter from '@/ui/IconFilter';
 
 function Filter() {
   return (

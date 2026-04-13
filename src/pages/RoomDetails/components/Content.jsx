@@ -1,4 +1,4 @@
-import FullDetailRoom from '../../../features/rooms/FullDetailRoom';
+import FullDetailRoom from '@/features/rooms/components/FullDetailRoom';
 
 function Content({ obj }) {
   return (

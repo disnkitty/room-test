@@ -1,4 +1,4 @@
-import Notifications from '../../../features/notifications/Notifications';
+import Notifications from '@/features/notifications/Notifications';
 
 function Header({ userName = 'Barbara' }) {
   return (

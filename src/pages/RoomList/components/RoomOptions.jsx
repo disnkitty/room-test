@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import RoomCategory from './RoomCategory';
-import AllMeetingRooms from '../../../features/rooms/AllMeetingRooms';
-import RecommendedRooms from '../../../features/rooms/RecommendedRooms';
+import AllMeetingRooms from '@/features/rooms/components/AllMeetingRooms';
+import RecommendedRooms from '@/features/rooms/components/RecommendedRooms';
 const ROOM_CATEGORIES = [
   'All rooms',
   'Small (2-4)',
@@ -9,7 +9,7 @@ const ROOM_CATEGORIES = [
   'Large (12+)',
 ];
 
-function RoomOptions({searchQuery}) {
+function RoomOptions({ searchQuery }) {
   const [active, setActive] = useState(ROOM_CATEGORIES[0]);
 
   return (
@@ -24,7 +24,7 @@ function RoomOptions({searchQuery}) {
           />
         ))}
       </div>
-      <RecommendedRooms activeCategory={active} searchQuery={searchQuery} />  {/* передаём */}
+      <RecommendedRooms activeCategory={active} searchQuery={searchQuery} />
       <AllMeetingRooms activeCategory={active} searchQuery={searchQuery} />
     </div>
   );

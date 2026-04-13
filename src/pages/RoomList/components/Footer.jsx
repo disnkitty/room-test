@@ -1,4 +1,4 @@
-import Navigation from '../../../features/navigation/Navigation';
+import Navigation from '@/features/navigation/Navigation';
 
 function Footer() {
   return (

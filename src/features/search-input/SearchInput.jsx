@@ -1,5 +1,5 @@
-import IconSearch from '../../ui/IconSearch';
-import Filter from '../filters/Filter';
+import IconSearch from '@/ui/IconSearch';
+import Filter from '@/features/filters/Filter';
 
 function SearchInput({ onSearch }) {
   return (
@@ -11,7 +11,7 @@ function SearchInput({ onSearch }) {
         placeholder="Search meeting room…"
         className="min-w-0 flex-1 border-0 bg-transparent text-sm font-normal leading-[150%] text-cinder placeholder:text-mist focus:outline-none focus:ring-0"
         autoComplete="off"
-         onChange={(e) => onSearch(e.target.value)}
+        onChange={(e) => onSearch(e.target.value)}
       />
       <Filter />
     </div>

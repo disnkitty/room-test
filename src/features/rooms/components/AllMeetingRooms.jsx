@@ -1,19 +1,10 @@
 import DetailRoomCard from './DetailRoomCard';
-import { useRooms } from '../../../context/RoomsContext';
+import { useRooms } from '@/context/RoomsContext';
 import { useRef } from 'react';
-import IconArrow from '../../ui/IconArrow';
-
-// const CATEGORY_MAP = {
-//   'All rooms': null,       
-//   'Small (2-4)': '2-4',
-//   'Medium (4-12)': '4-12',
-//   'Large (12+)': '12+',
-// };
+import IconArrow from '@/ui/IconArrow';
 
 function AllMeetingRooms({ activeCategory, searchQuery }) {
   const { rooms } = useRooms();
-   console.log('activeCategory:', activeCategory);
-  console.log('rooms:', rooms);
   const scrollRef = useRef(null);
 
   const scrollLeft = () => {
@@ -34,10 +25,10 @@ function AllMeetingRooms({ activeCategory, searchQuery }) {
   if (activeCategory === 'Medium (4-12)') whatRender = medium;
   if (activeCategory === 'Large (12+)') whatRender = large;
   if (searchQuery) {
-  whatRender = whatRender.filter((obj) =>
-    obj.roomName.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-}
+    whatRender = whatRender.filter((obj) =>
+      obj.roomName.toLowerCase().includes(searchQuery.toLowerCase()),
+    );
+  }
   return (
     <section className="flex flex-col gap-2">
       <div className="flex items-center justify-between gap-4">

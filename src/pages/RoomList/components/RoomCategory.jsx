@@ -1,15 +1,7 @@
-import AllMeetingRooms from '../../../features/rooms/AllMeetingRooms';
-import RecommendedRooms from '../../../features/rooms/RecommendedRooms';
-import Button from '../../../ui/Button';
+import AllMeetingRooms from '@/features/rooms/components/AllMeetingRooms';
+import RecommendedRooms from '@/features/rooms/components/RecommendedRooms';
+import Button from '@/ui/Button';
 function RoomCategory({ name, isActive, onSelect }) {
-  // const [tab, setTab] = useState(
-  //   (name === 'All rooms' && 'all') |
-  //     (name === 'Small (2-4)' && 'small') |
-  //     (name === 'Medium (4-12)' && 'mediuml') |
-  //     (name === 'Large (12+)' && 'large'),
-  // );
-
-
   return (
     <Button
       type="button"
@@ -20,8 +12,6 @@ function RoomCategory({ name, isActive, onSelect }) {
     >
       {name}
     </Button>
-    
-    
   );
 }
 

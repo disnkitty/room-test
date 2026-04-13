@@ -1,5 +1,5 @@
-import IconPeople from '../../ui/IconPeople';
-import IconStar from '../../ui/IconStar';
+import IconPeople from '@/ui/IconPeople';
+import IconStar from '@/ui/IconStar';
 import { Link } from 'react-router-dom';
 
 function RoomCard({ obj }) {
@@ -16,14 +16,12 @@ function RoomCard({ obj }) {
         <div className="absolute inset-0 bg-black/50" aria-hidden />
       </div>
 
-
       <div className="relative flex h-full flex-col justify-between p-3">
         <div />
         <h3 className="text-center font-semibold leading-snug text-white drop-shadow">
           {obj.roomName}
         </h3>
 
-       
         <div className="flex items-left  gap-2 pointer-events-none select-none">
           <div className="inline-flex h-5 items-center gap-1 rounded-full bg-white px-2  shadow">
             <IconPeople size="sm" />

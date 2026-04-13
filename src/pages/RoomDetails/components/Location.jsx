@@ -1,5 +1,4 @@
-
-import IconOffice from '../../../ui/IconOffice'
+import IconOffice from '@/ui/IconOffice';
 function Location({ obj }) {
   return (
     <section className="flex flex-col gap-4 border-t border-concrete pt-4">
@@ -15,7 +14,7 @@ function Location({ obj }) {
           alt="location map"
           className="h-full w-full object-cover"
         />
-<button className="absolute flex h-[52px] w-[52px] items-center justify-center rounded-full bg-[#EAFF00] text-white">
+        <button className="absolute flex h-[52px] w-[52px] items-center justify-center rounded-full bg-[#EAFF00] text-white">
           <IconOffice className=" h-7 w-7  invert" />
         </button>
       </div>

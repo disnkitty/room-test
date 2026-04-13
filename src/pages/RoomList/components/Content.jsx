@@ -1,7 +1,7 @@
-import SearchInput from '../../../features/search-input/SearchInput';
+import SearchInput from '@/features/search-input/SearchInput';
 import RoomOptions from './RoomOptions';
-import RecommendedRooms from '../../../features/rooms/RecommendedRooms';
-import AllMeetingRooms from '../../../features/rooms/AllMeetingRooms';
+import RecommendedRooms from '@/features/rooms/components/RecommendedRooms';
+import AllMeetingRooms from '@/features/rooms/components/AllMeetingRooms';
 import { useState } from 'react';
 function Content() {
   const [searchQuery, setSearchQuery] = useState('');

@@ -1,18 +1,18 @@
-import Button from '../../ui/Button';
-import IconStar from '../../ui/IconStar';
-import IconPeople from '../../ui/IconPeople';
+import Button from '@/ui/Button';
+import IconStar from '@/ui/IconStar';
+import IconPeople from '@/ui/IconPeople';
 import { useNavigate } from 'react-router-dom';
 
-function ReviewRoomCard({ obj, id }) {
+function ReviewRoomCard({ obj, id, selectedDate, selectedTime }) {
   const navigate = useNavigate();
 
   return (
     <div className="flex flex-col gap-5 w-full">
-      <p className="text-xl font-semibold leading-none text-cinder">Review and Booking</p>
+      <p className="text-xl font-semibold leading-none text-cinder">
+        Review and Booking
+      </p>
 
       <div className="w-full border border-concrete rounded-2xl p-3 flex flex-col gap-2.5">
-
-        
         <div className="flex flex-row items-start gap-3 w-full">
           <article className="relative h-[83px] w-[104px] shrink-0 overflow-hidden rounded-[6px]">
             <img
@@ -30,17 +30,20 @@ function ReviewRoomCard({ obj, id }) {
             <div className="flex items-center gap-1 pointer-events-none select-none">
               <div className="inline-flex h-6 items-center gap-1 rounded-full bg-concrete px-2 py-1">
                 <IconStar size="sm" variant="rating" />
-                <span className="text-[10px] font-medium text-cinder">{obj.rating}</span>
+                <span className="text-[10px] font-medium text-cinder">
+                  {obj.rating}
+                </span>
               </div>
               <div className="inline-flex h-6 items-center gap-1 rounded-full bg-concrete px-2 py-1">
                 <IconPeople size="sm" />
-                <span className="text-[10px] font-medium text-cinder">{obj.peoples} people</span>
+                <span className="text-[10px] font-medium text-cinder">
+                  {obj.peoples} people
+                </span>
               </div>
             </div>
           </div>
         </div>
 
-       
         <div className="flex flex-row justify-between items-start w-full border-t border-concrete pt-4">
           <div className="flex flex-col gap-2">
             <p className="text-sm font-semibold text-cinder">Location</p>
@@ -55,27 +58,33 @@ function ReviewRoomCard({ obj, id }) {
           </Button>
         </div>
 
-      
         <div className="flex flex-row justify-between items-center w-full border-t border-concrete pt-4">
           <div className="flex flex-col gap-2">
             <p className="text-sm font-semibold text-cinder">Dates</p>
-            <p className="text-sm font-normal text-cinder">{obj.date}</p>
-            <p className="text-sm font-normal text-cinder">{obj.timeRange}</p>
+            <p className="text-sm font-normal text-cinder">
+              {selectedDate?.toLocaleDateString('en', {
+                month: 'long',
+                day: 'numeric',
+                year: 'numeric',
+              })}
+            </p>
+            <p className="text-sm font-normal text-cinder">{selectedTime}</p>
           </div>
           <Button
             type="button"
             onClick={() => navigate(-2)}
             className="text-sm font-medium text-mist items-start shrink-0"
           >
-             Change
+            Change
           </Button>
         </div>
 
-     
         <div className="flex flex-row justify-between items-start w-full border-t border-concrete pt-4 pb-2">
           <div className="flex flex-col gap-2">
             <p className="text-sm font-semibold text-cinder">Total price</p>
-            <p className="text-sm font-normal text-cinder">${obj.price * 2} USD</p>
+            <p className="text-sm font-normal text-cinder">
+              ${obj.price * 2} USD
+            </p>
           </div>
           <Button
             type="button"
@@ -85,7 +94,6 @@ function ReviewRoomCard({ obj, id }) {
             Details
           </Button>
         </div>
-
       </div>
     </div>
   );

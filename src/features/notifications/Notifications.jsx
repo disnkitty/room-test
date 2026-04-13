@@ -1,5 +1,5 @@
-import IconBell from '../../ui/IconBell';
-import Button from '../../ui/Button';
+import IconBell from '@/ui/IconBell';
+import Button from '@/ui/Button';
 
 function Notifications() {
   return (
@@ -14,4 +14,3 @@ function Notifications() {
 }
 
 export default Notifications;
-

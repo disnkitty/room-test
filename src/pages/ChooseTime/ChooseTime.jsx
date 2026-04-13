@@ -1,8 +1,8 @@
-import Button from '../../ui/Button';
+import Button from '@/ui/Button';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import IconArrow from '../../ui/IconArrow';
-import IconCross from '../../ui/IconCross';
+import IconArrow from '@/ui/IconArrow';
+import IconCross from '@/ui/IconCross';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 
@@ -25,8 +25,7 @@ function ChooseTime({ selectedDate, onNext }) {
 
   return (
     <div className="py-10 flex min-h-screen w-full items-center justify-center bg-[#F2F2F2] px-4">
-      <div className="flex w-full max-w-[600px] flex-col rounded-2xl bg-white px-8 py-8">
-        
+      <div className="flex w-full max-w-[600px] flex-col rounded-2xl bg-white px-8 py-8 min-h-[580px]">
         <div className="mb-6 flex items-center justify-between">
           <Button
             onClick={() => navigate(-1)}
@@ -34,12 +33,6 @@ function ChooseTime({ selectedDate, onNext }) {
           >
             <IconArrow />
           </Button>
-
-          <div className="flex items-center gap-1">
-            <div className="h-1 w-3.5 rounded-full bg-concrete" />
-            <div className="h-1 w-7 rounded-full bg-cinder" />
-            <div className="h-1 w-3.5 rounded-full bg-concrete" />
-          </div>
 
           <Button
             onClick={() => navigate(-2)}
@@ -57,11 +50,10 @@ function ChooseTime({ selectedDate, onNext }) {
           <span className="text-base font-medium text-cinder">
             Available time slots
           </span>
+          <p></p>
           <span className="text-sm font-medium text-mist">{formattedDate}</span>
-          
         </div>
 
-        
         <div className="flex flex-col rounded-2xl border border-concrete overflow-hidden mb-6">
           {TIME_SLOTS.map((slot) => (
             <Button
@@ -88,7 +80,8 @@ function ChooseTime({ selectedDate, onNext }) {
         <Link to={`/rooms/${id}/date/time/review`}>
           <Button
             disabled={!selected}
-            className={`h-12 w-full rounded-pill text-base font-medium transition-opacity ${
+            onClick={() => onNext?.(selected)}
+            className={`transition-transform duration-200 hover:scale-105 h-12 w-full rounded-pill text-base font-medium transition-opacity ${
               selected
                 ? 'bg-chartreuse text-cinder'
                 : 'cursor-not-allowed bg-concrete text-mist'

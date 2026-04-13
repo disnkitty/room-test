@@ -1,9 +1,9 @@
-import IconAvailable from '../../ui/IconAvailable';
-import IconCross from '../../ui/IconCross';
-import IconLike from '../../ui/IconLike';
-import IconPeople from '../../ui/IconPeople';
-import IconStar from '../../ui/IconStar';
-import Button from '../../ui/Button';
+import IconAvailable from '@/ui/IconAvailable';
+import IconCross from '@/ui/IconCross';
+import IconLike from '@/ui/IconLike';
+import IconPeople from '@/ui/IconPeople';
+import IconStar from '@/ui/IconStar';
+import Button from '@/ui/Button';
 import { Link } from 'react-router-dom';
 
 function DetailRoomCard({ obj, onBook, onLike }) {

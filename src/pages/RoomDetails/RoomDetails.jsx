@@ -1,4 +1,4 @@
-import { useRooms } from '../../../context/RoomsContext';
+import { useRooms } from '@/context/RoomsContext';
 import Content from './components/Content';
 import Footer from './components/Footer';
 import { useParams } from 'react-router-dom';

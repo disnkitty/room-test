@@ -226,15 +226,7 @@ const cardData = [
 export function RoomsProvider({ children }) {
   const [rooms, setRooms] = useState(cardData);
 
-  //   function toggleLike(roomName) {
-  //     setRooms(prev =>
-  //       prev.map(room =>
-  //         room.roomName === roomName
-  //           ? { ...room, isLiked: !room.isLiked }
-  //           : room
-  //       )
-  //     );
-  //   }
+
 
   return (
     <RoomsContext.Provider value={{ rooms }}>{children}</RoomsContext.Provider>

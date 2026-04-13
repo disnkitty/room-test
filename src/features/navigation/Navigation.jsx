@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import IconHouse from '../../ui/IconHouse';
-import IconSearch from '../../ui/IconSearch';
-import IconLike from '../../ui/IconLike';
-import IconPerson from '../../ui/IconPerson';
+import IconHouse from '@/ui/IconHouse';
+import IconSearch from '@/ui/IconSearch';
+import IconLike from '@/ui/IconLike';
+import IconPerson from '@/ui/IconPerson';
 
 const TABS = [
   { id: 'home', label: 'Home', Icon: IconHouse },

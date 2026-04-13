@@ -1,7 +1,7 @@
 import RoomCard from './RoomCard';
-import { useRooms } from '../../../context/RoomsContext';
+import { useRooms } from '@/context/RoomsContext';
 import { useRef } from 'react';
-import IconArrow from '../../ui/IconArrow';
+import IconArrow from '@/ui/IconArrow';
 
 function RecommendedRooms() {
   const { rooms } = useRooms();
@@ -22,7 +22,6 @@ function RecommendedRooms() {
           Recommended rooms
         </h2>
 
-   
         <div className="flex items-center gap-2">
           <button
             type="button"

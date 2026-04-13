@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
-import IconCross from '../../ui/IconCross';
+import IconCross from '@/ui/IconCross';
 
 const DAYS = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 
@@ -13,7 +13,9 @@ function getMonthDays(year, month) {
 
 function CalendarMonth({ year, month, selected, onSelect, today }) {
   const { daysInMonth, startOffset } = getMonthDays(year, month);
-  const monthName = new Date(year, month).toLocaleString('en', { month: 'long' });
+  const monthName = new Date(year, month).toLocaleString('en', {
+    month: 'long',
+  });
 
   const cells = [];
   for (let i = 0; i < startOffset; i++) cells.push(null);
@@ -67,20 +69,17 @@ function ChooseDates({ onNext }) {
   const months = [
     { year: today.getFullYear(), month: today.getMonth() },
     {
-      year: today.getMonth() === 11 ? today.getFullYear() + 1 : today.getFullYear(),
+      year:
+        today.getMonth() === 11 ? today.getFullYear() + 1 : today.getFullYear(),
       month: today.getMonth() === 11 ? 0 : today.getMonth() + 1,
     },
   ];
 
   return (
     <div className="py-10 flex min-h-screen w-full items-center justify-center bg-[#F2F2F2] px-4">
-      <div className="flex w-full max-w-[600px] flex-col rounded-2xl bg-white px-8 py-8">
-
-        
+      <div className="flex w-full max-w-[600px] flex-col rounded-2xl bg-white px-8 py-8 min-h-[580px]">
         <div className="mb-6 flex items-center justify-between">
-          <h2 className="text-2xl font-semibold text-cinder">
-            Choose dates
-          </h2>
+          <h2 className="text-2xl font-semibold text-cinder">Choose dates</h2>
           <button
             onClick={() => navigate(-1)}
             className="flex h-10 w-10 items-center justify-center rounded-full bg-concrete text-cinder"
@@ -89,7 +88,6 @@ function ChooseDates({ onNext }) {
           </button>
         </div>
 
-        
         <div className="grid grid-cols-7 border-y border-concrete py-2 mb-4">
           {DAYS.map((d, i) => (
             <span
@@ -101,7 +99,6 @@ function ChooseDates({ onNext }) {
           ))}
         </div>
 
-    
         <div className="flex flex-col gap-6 overflow-y-auto max-h-[50vh] mb-6">
           {months.map(({ year, month }) => (
             <CalendarMonth
@@ -115,12 +112,11 @@ function ChooseDates({ onNext }) {
           ))}
         </div>
 
-       
         <Link to={`/rooms/${id}/date/time`}>
           <button
             disabled={!selected}
             onClick={() => onNext?.(selected)}
-            className={`h-12 w-full rounded-pill text-base font-medium transition-opacity ${
+            className={`h-12 w-full transition-transform duration-200 hover:scale-105 rounded-pill text-base font-medium transition-opacity ${
               selected
                 ? 'bg-chartreuse text-cinder'
                 : 'bg-concrete text-mist cursor-not-allowed'
@@ -129,7 +125,6 @@ function ChooseDates({ onNext }) {
             Next
           </button>
         </Link>
-
       </div>
     </div>
   );

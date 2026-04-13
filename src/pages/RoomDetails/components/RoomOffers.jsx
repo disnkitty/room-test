@@ -1,5 +1,5 @@
-import { roomFeatures } from "../../../ui/roomFeatures";
-import Button from "../../../ui/Button";
+import { roomFeatures } from '@/ui/roomFeatures';
+import Button from '@/ui/Button';
 
 function RoomOffers({ obj }) {
   const activeFeatures = roomFeatures.filter(({ key }) => {
