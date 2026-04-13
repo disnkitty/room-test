@@ -14,7 +14,7 @@ function Review({ selectedDate, selectedTime }) {
 
   return (
     <div className="py-10 flex min-h-screen w-full items-center justify-center bg-[#F2F2F2] px-4">
-      <div className="flex w-full max-w-[600px] flex-col rounded-2xl bg-white px-8 py-8 min-h-[580px]">
+      <div className="flex w-full max-w-[600px] flex-col rounded-2xl bg-white px-8 py-8 min-h-[calc(100vh-80px)]">
         <div className="mb-6 flex items-center justify-between">
           <Button
             onClick={() => navigate(-1)}
