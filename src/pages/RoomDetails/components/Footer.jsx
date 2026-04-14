@@ -1,7 +1,7 @@
 import Button from '@/ui/Button';
 import { Link } from 'react-router-dom';
 
-function Footer({ obj }) {
+function Footer({ obj, onBookClick }) {
   return (
     <div className=" bottom-10 left-0 right-0 flex items-center justify-between bg-white px-4 py-4 shadow-card ">
       <div className="flex flex-col gap-0.5">
@@ -13,11 +13,11 @@ function Footer({ obj }) {
           <span className="text-sm text-mist">/hour</span>
         </div>
       </div>
-      <Link to={`/rooms/${obj?.id}/date`}>
-        <Button className="h-12 w-[200px] transition-transform duration-200 hover:scale-105 rounded-pill bg-chartreuse text-base font-medium text-cinder">
-          Book Now
+      
+        <Button onClick={onBookClick} className="h-12 w-[200px] transition-transform duration-200 hover:scale-105 rounded-pill bg-chartreuse text-base font-medium text-cinder">
+          Book Now 
         </Button>
-      </Link>
+     
     </div>
   );
 }

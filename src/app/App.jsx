@@ -19,7 +19,7 @@ function App() {
           <Routes>
             <Route path="/" element={<RoomList />} />
             <Route path="/rooms/:id" element={<RoomDetails />} />
-            <Route
+            {/* <Route
               path="/rooms/:id/date"
               element={<ChooseDates onNext={(date) => setSelectedDate(date)} />}
             />
@@ -45,6 +45,9 @@ function App() {
             />
             <Route path="/rooms/:id/success" element={<SuccessState />} />
             <Route path="/rooms/:id/error" element={<ErrorState />} />
+             */}
+
+
           </Routes>
         </div>
       </RoomsProvider>

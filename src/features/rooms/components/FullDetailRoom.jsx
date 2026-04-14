@@ -12,14 +12,14 @@ function FullDetailRoom({ obj }) {
   const navigate = useNavigate();
   return (
     <div className="flex flex-col">
-      <div className="relative h-[255px] w-full shrink-0 overflow-hidden">
+      <div className="relative h-[255px] w-full shrink-0 overflow-hidden ">
+        {' '}
         <img
           src={obj?.imageUrl}
           alt={obj?.roomName}
           className="h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-black/20" aria-hidden />
-
         <div className="absolute left-4 right-4 top-4 flex items-center justify-between">
           <button
             onClick={() => navigate(-1)}
@@ -36,15 +36,11 @@ function FullDetailRoom({ obj }) {
             </button>
           </div>
         </div>
-
-        <span className="absolute bottom-3 right-3 flex items-center justify-center rounded-xl bg-black/60 px-3 py-1 text-xs text-white">
-          5/6
-        </span>
       </div>
 
-      <div className="flex flex-col gap-4 rounded-t-2xl bg-alabaster px-4 pt-4">
+      <div className="relative z-10 -mt-8 flex flex-col gap-4 rounded-t-[32px] bg-white px-4 pt-6">
         <div className="flex flex-col items-center gap-3">
-          <h1 className="w-full text-center text-xl font-medium leading-none text-cinder">
+          <h1 className="text-cinder w-full text-center text-xl font-medium leading-none">
             {obj?.roomName}
           </h1>
           <div className="flex flex-col items-center gap-2">

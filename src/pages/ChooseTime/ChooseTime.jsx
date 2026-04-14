@@ -12,7 +12,7 @@ const TIME_SLOTS = [
   '17:30 PM - 19:00 PM',
 ];
 
-function ChooseTime({ selectedDate, onNext }) {
+function ChooseTime({ onTimeArrow, selectedDate, onNext, onTimeNextClick, onTimeClose }) {
   const [selected, setSelected] = useState(null);
   const { id } = useParams();
   const navigate = useNavigate();
@@ -24,18 +24,18 @@ function ChooseTime({ selectedDate, onNext }) {
   });
 
   return (
-    <div className="py-10 flex min-h-screen w-full items-center justify-center bg-[#F2F2F2] px-4">
+    <div className="py-10 flex  w-full items-center justify-center  px-4">
       <div className="flex w-full max-w-[600px] flex-col rounded-2xl bg-white px-8 py-8 min-h-[calc(100vh-80px)]">
         <div className="mb-6 flex items-center justify-between">
           <Button
-            onClick={() => navigate(-1)}
+          onClick={onTimeArrow}
             className="flex h-10 w-10 items-center justify-center rounded-full bg-concrete text-cinder"
           >
             <IconArrow />
           </Button>
 
           <Button
-            onClick={() => navigate(-2)}
+            onClick={onTimeClose}
             className="flex h-10 w-10 items-center justify-center rounded-full bg-concrete text-cinder"
           >
             <IconCross />
@@ -77,10 +77,10 @@ function ChooseTime({ selectedDate, onNext }) {
           Request custom time
         </Button>
 
-        <Link to={`/rooms/${id}/date/time/review`}>
+      
           <Button
             disabled={!selected}
-            onClick={() => onNext?.(selected)}
+            onClick={() => {onNext?.(selected); onTimeNextClick?.()  } }
             className={`transition-transform duration-200 hover:scale-105 h-12 w-full rounded-pill text-base font-medium transition-opacity ${
               selected
                 ? 'bg-chartreuse text-cinder'
@@ -89,7 +89,7 @@ function ChooseTime({ selectedDate, onNext }) {
           >
             Next
           </Button>
-        </Link>
+      
       </div>
     </div>
   );
