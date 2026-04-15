@@ -1,30 +1,45 @@
+import { useRef } from 'react';
 import { useRooms } from '@/context/RoomsContext';
 import ReviewRoomCard from '@/features/rooms/components/ReviewRoomCard';
 import Button from '@/ui/Button';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import IconArrow from '@/ui/IconArrow';
 import IconCross from '@/ui/IconCross';
+import { useDragToClose } from '@/useDragToClose';
 
-function Review({ onReviewClose, onReviewArrow, selectedDate, selectedTime, onBookFreeNow }) {
+function Review({
+  onReviewClose,
+  onReviewArrow,
+  selectedDate,
+  selectedTime,
+  onBookFreeNow,
+}) {
   const { rooms } = useRooms();
   const { id } = useParams();
+  const sheetRef = useRef(null);
+  const dragHandle = useDragToClose(onReviewClose, 80, sheetRef);
 
   const room = rooms.find((r) => r.id === Number(id)) || rooms[0];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end md:items-center justify-center md:py-10 md:px-4">
-
+    <div className="fixed inset-0 z-50 flex flex-col items-end justify-end lg:items-center lg:justify-center lg:p-6">
       <div className="absolute inset-0 bg-black/50" onClick={onReviewClose} />
 
-      <div className="relative flex w-full md:max-w-[600px] flex-col rounded-t-2xl md:rounded-2xl bg-white px-8 py-8 max-h-[95vh] md:max-h-[calc(100vh-80px)]">
+      <div
+        ref={sheetRef}
+        className="relative flex h-[810px] w-full max-h-[calc(100vh-42px)] flex-col overflow-hidden rounded-t-2xl bg-white lg:h-[760px] lg:w-[560px] lg:max-h-[calc(100vh-64px)] lg:rounded-2xl"
+      >
+        <div
+          onPointerDown={dragHandle.onPointerDown}
+          className="flex cursor-grab touch-none flex-row justify-center gap-2 py-2 active:cursor-grabbing lg:hidden"
+        >
+          <div className="h-1 w-4 rounded-full bg-concrete"></div>
+          <div className="h-1 w-4 rounded-full bg-concrete"></div>
+          <div className="h-1 w-10 rounded-full bg-black"></div>
+          <div className="h-1 w-4 rounded-full bg-concrete"></div>
+        </div>
 
-<div class="flex flex-row justify-center gap-2 mb-4 md:hidden">
-  <div class="h-1 w-4 rounded-full bg-concrete"></div>
-  <div class="h-1 w-4 rounded-full bg-concrete"></div>
-  <div class="h-1 w-10 rounded-full bg-black"></div>
-  <div class="h-1 w-4 rounded-full bg-concrete"></div>
-</div>
-        <div className="mb-6 flex items-center justify-between">
+        <div className="px-8 py-4 flex items-center justify-between flex-shrink-0">
           <Button
             onClick={onReviewArrow}
             className="flex h-10 w-10 items-center justify-center rounded-full bg-concrete text-cinder"
@@ -39,19 +54,23 @@ function Review({ onReviewClose, onReviewArrow, selectedDate, selectedTime, onBo
           </Button>
         </div>
 
-        <ReviewRoomCard
-          obj={room}
-          id={id}
-          selectedDate={selectedDate}
-          selectedTime={selectedTime}
-        />
+        <div className="flex-1 overflow-y-auto px-8">
+          <ReviewRoomCard
+            obj={room}
+            id={id}
+            selectedDate={selectedDate}
+            selectedTime={selectedTime}
+          />
+        </div>
 
-        <Button
-          onClick={onBookFreeNow}
-          className="transition-transform duration-200 hover:scale-105 w-full flex items-center justify-center h-12 bg-chartreuse rounded-pill text-base font-medium leading-none text-cinder"
-        >
-          Book Free Now
-        </Button>
+        <div className="px-8 py-4 flex-shrink-0 bg-white border-t border-concrete">
+          <Button
+            onClick={onBookFreeNow}
+            className="transition-transform duration-200 hover:scale-105 w-full flex items-center justify-center h-12 bg-chartreuse rounded-pill text-base font-medium leading-none text-cinder"
+          >
+            Book Free Now
+          </Button>
+        </div>
       </div>
     </div>
   );

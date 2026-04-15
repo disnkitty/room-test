@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import IconCross from '@/ui/IconCross';
 import { useDragToClose } from '../../useDragToClose';
@@ -59,7 +59,8 @@ function CalendarMonth({ year, month, selected, onSelect, today }) {
 }
 
 function ChooseDates({ onNext, onDateNextClick, onDateClose }) {
-  const drag = useDragToClose(onDateClose);
+  const sheetRef = useRef(null);
+  const dragHandle = useDragToClose(onDateClose, 80, sheetRef);
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
@@ -75,19 +76,25 @@ function ChooseDates({ onNext, onDateNextClick, onDateClose }) {
   ];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end md:items-center justify-center md:py-10 md:px-4">
+    <div className="fixed inset-0 z-50 flex flex-col items-end justify-end lg:items-center lg:justify-center lg:p-6">
       <div className="absolute inset-0 bg-black/50" onClick={onDateClose} />
 
-      <div className="relative flex w-full md:max-w-[600px] flex-col rounded-t-2xl md:rounded-2xl bg-white px-8 py-8 max-h-[95vh] md:max-h-[calc(100vh-80px)]">
-<div class="flex flex-row justify-center gap-2 mb-4 md:hidden">
-  <div class="h-1 w-10 rounded-full bg-black"></div>
-  <div class="h-1 w-4 rounded-full bg-concrete"></div>
-  <div class="h-1 w-4 rounded-full bg-concrete"></div>
-  <div class="h-1 w-4 rounded-full bg-concrete"></div>
-</div>
+      <div
+        ref={sheetRef}
+        className="relative flex h-[810px] w-full max-h-[calc(100vh-42px)] flex-col overflow-hidden rounded-t-2xl bg-white lg:h-[760px] lg:w-[560px] lg:max-h-[calc(100vh-64px)] lg:rounded-2xl"
+      >
+        <div
+          onPointerDown={dragHandle.onPointerDown}
+          className="flex cursor-grab touch-none flex-row justify-center gap-2 py-2 active:cursor-grabbing lg:hidden"
+        >
+            <div className="h-1 w-10 rounded-full bg-black"></div>
+          <div className="h-1 w-4 rounded-full bg-concrete"></div>
+          <div className="h-1 w-4 rounded-full bg-concrete"></div>
+          <div className="h-1 w-4 rounded-full bg-concrete"></div>
+        
+        </div>
 
-
-        <div className="mb-6 flex items-center justify-between">
+        <div className="px-8 py-4 flex items-center justify-between flex-shrink-0">
           <h2 className="text-2xl font-semibold text-cinder">Choose dates</h2>
           <button
             onClick={onDateClose}
@@ -97,43 +104,47 @@ function ChooseDates({ onNext, onDateNextClick, onDateClose }) {
           </button>
         </div>
 
-        <div className="grid grid-cols-7 border-y border-concrete py-2 mb-4">
-          {DAYS.map((d, i) => (
-            <span
-              key={i}
-              className="flex h-12 items-center justify-center text-sm font-medium text-mist"
-            >
-              {d}
-            </span>
-          ))}
+        <div className="flex-1 overflow-y-auto px-8">
+          <div className="grid grid-cols-7 border-y border-concrete py-2 mb-4">
+            {DAYS.map((d, i) => (
+              <span
+                key={i}
+                className="flex h-12 items-center justify-center text-sm font-medium text-mist"
+              >
+                {d}
+              </span>
+            ))}
+          </div>
+
+          <div className="flex flex-col gap-6">
+            {months.map(({ year, month }) => (
+              <CalendarMonth
+                key={`${year}-${month}`}
+                year={year}
+                month={month}
+                selected={selected}
+                onSelect={setSelected}
+                today={today}
+              />
+            ))}
+          </div>
         </div>
 
-        <div className="flex flex-col gap-6 overflow-y-auto max-h-[50vh] mb-6">
-          {months.map(({ year, month }) => (
-            <CalendarMonth
-              key={`${year}-${month}`}
-              year={year}
-              month={month}
-              selected={selected}
-              onSelect={setSelected}
-              today={today}
-            />
-          ))}
+        <div className="px-8 py-4 flex-shrink-0 bg-white border-t border-concrete">
+          <button
+            disabled={!selected}
+            onClick={() => {
+              onDateNextClick?.(selected);
+            }}
+            className={`h-12 w-full transition-transform duration-200 hover:scale-105 rounded-pill text-base font-medium ${
+              selected
+                ? 'bg-chartreuse text-cinder'
+                : 'bg-concrete text-mist cursor-not-allowed'
+            }`}
+          >
+            Next
+          </button>
         </div>
-
-        <button
-          disabled={!selected}
-          onClick={() => {
-            onDateNextClick?.(selected);
-          }}
-          className={`h-12 w-full transition-transform duration-200 hover:scale-105 rounded-pill text-base font-medium transition-opacity ${
-            selected
-              ? 'bg-chartreuse text-cinder'
-              : 'bg-concrete text-mist cursor-not-allowed'
-          }`}
-        >
-          Next
-        </button>
       </div>
     </div>
   );
