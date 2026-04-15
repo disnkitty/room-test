@@ -5,10 +5,11 @@ import IconPeople from '@/ui/IconPeople';
 import IconStar from '@/ui/IconStar';
 import Button from '@/ui/Button';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import RoomDetails from '../../../pages/RoomDetails/RoomDetails';
 
-function DetailRoomCard({ obj, onBook, onLike }) {
+function DetailRoomCard({ obj, onLike, onBookClick }) {
   const isAvailable = obj.status === 'Available';
-
   return (
     <article className="mt-2 mb-2 flex w-[285px] shrink-0 flex-col rounded-2xl bg-white shadow-card transition-transform duration-300 hover:scale-105">
       <Link to={`/rooms/${obj?.id}`} className="flex flex-col">
@@ -72,10 +73,14 @@ function DetailRoomCard({ obj, onBook, onLike }) {
             /hour
           </span>
         </div>
-        <Link to={`/rooms/${obj?.id}/date`}>
+
           <Button
             type="button"
-            onClick={onBook}
+              disabled={!isAvailable}
+            onClick={(e) => {
+ e.stopPropagation(); 
+      onBookClick?.(obj); 
+  }}
             className={`flex h-10 w-[169px] shrink-0 items-center justify-center rounded-pill px-5 text-base font-medium leading-none transition-opacity ${
               isAvailable
                 ? 'border-0 bg-chartreuse text-cinder active:opacity-90'
@@ -84,7 +89,9 @@ function DetailRoomCard({ obj, onBook, onLike }) {
           >
             Book
           </Button>
-        </Link>
+     
+      
+       
       </div>
     </article>
   );

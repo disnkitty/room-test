@@ -2,7 +2,7 @@ import IconError from '@/ui/IconError';
 import Button from '@/ui/Button';
 import { useNavigate } from 'react-router-dom';
 
-function ErrorState() {
+function ErrorState({onDone}) {
   const navigate = useNavigate();
 
   return (

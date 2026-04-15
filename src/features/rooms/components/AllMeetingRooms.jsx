@@ -2,8 +2,10 @@ import DetailRoomCard from './DetailRoomCard';
 import { useRooms } from '@/context/RoomsContext';
 import { useRef } from 'react';
 import IconArrow from '@/ui/IconArrow';
+import { useNavigate } from 'react-router-dom';
 
 function AllMeetingRooms({ activeCategory, searchQuery }) {
+ const navigate = useNavigate();
   const { rooms } = useRooms();
   const scrollRef = useRef(null);
 
@@ -64,7 +66,7 @@ function AllMeetingRooms({ activeCategory, searchQuery }) {
         className="-mx-4 flex gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {whatRender.map((obj) => (
-          <DetailRoomCard key={obj.id} obj={obj} />
+          <DetailRoomCard    onBookClick={() => navigate(`/rooms/${obj.id}?startModal=date`)} key={obj.id} obj={obj} />
         ))}
       </div>
     </section>

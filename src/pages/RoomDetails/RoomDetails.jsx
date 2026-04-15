@@ -3,6 +3,7 @@ import ChooseDates from '@/pages/ChooseDates/ChooseDates';
 import ChooseTime from '@/pages/ChooseTime/ChooseTime';
 import Review from '@/pages/Review/Review';
 import SuccessState from '@/pages/SuccessState/SuccessState';
+import { useSearchParams } from 'react-router-dom';
 
 import Content from './components/Content';
 import Footer from './components/Footer';
@@ -11,7 +12,10 @@ import { useState } from 'react';
 function RoomDetails() {
   const { rooms } = useRooms();
   const { id } = useParams();
-  const [modal, setModal] = useState(null);
+  const [searchParams] = useSearchParams();
+  const [modal, setModal] = useState(
+    () => searchParams.get('startModal') ?? null, // 'date', если пришли из Book
+  );
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
   const room = rooms.find((r) => r.id === Number(id));
@@ -67,6 +71,8 @@ function RoomDetails() {
           </div>
         </div>
       )}
+
+      
 
       {modal === 'success' && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4">
