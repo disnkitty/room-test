@@ -24,11 +24,24 @@ function ChooseTime({ onTimeArrow, selectedDate, onNext, onTimeNextClick, onTime
   });
 
   return (
-    <div className="py-10 flex  w-full items-center justify-center  px-4">
-      <div className="flex w-full max-w-[600px] flex-col rounded-2xl bg-white px-8 py-8 min-h-[calc(100vh-80px)]">
+    // 1. Оверлей — fixed на весь экран, на мобиле контент внизу, на десктопе по центру
+    <div className="fixed inset-0 z-50 flex items-end md:items-center justify-center md:py-10 md:px-4">
+
+      {/* 2. Тёмный фон — клик закрывает модалку */}
+      <div className="absolute inset-0 bg-black/50" onClick={onTimeClose} />
+
+      {/* 3. Карточка — на мобиле скругление только сверху, на десктопе со всех сторон */}
+      <div className="relative flex w-full md:max-w-[600px] flex-col rounded-t-2xl md:rounded-2xl bg-white px-8 py-8 max-h-[95vh] md:max-h-[calc(100vh-80px)]">
+
+<div class="flex flex-row justify-center gap-2 mb-4 md:hidden">
+  <div class="h-1 w-4 rounded-full bg-concrete"></div>
+  <div class="h-1 w-10 rounded-full bg-black"></div>
+  <div class="h-1 w-4 rounded-full bg-concrete"></div>
+  <div class="h-1 w-4 rounded-full bg-concrete"></div>
+</div>
         <div className="mb-6 flex items-center justify-between">
           <Button
-          onClick={onTimeArrow}
+            onClick={onTimeArrow}
             className="flex h-10 w-10 items-center justify-center rounded-full bg-concrete text-cinder"
           >
             <IconArrow />
@@ -77,19 +90,17 @@ function ChooseTime({ onTimeArrow, selectedDate, onNext, onTimeNextClick, onTime
           Request custom time
         </Button>
 
-      
-          <Button
-            disabled={!selected}
-            onClick={() => {onTimeNextClick?.(selected);  } }
-            className={`transition-transform duration-200 hover:scale-105 h-12 w-full rounded-pill text-base font-medium transition-opacity ${
-              selected
-                ? 'bg-chartreuse text-cinder'
-                : 'cursor-not-allowed bg-concrete text-mist'
-            }`}
-          >
-            Next
-          </Button>
-      
+        <Button
+          disabled={!selected}
+          onClick={() => { onTimeNextClick?.(selected); }}
+          className={`transition-transform duration-200 hover:scale-105 h-12 w-full rounded-pill text-base font-medium transition-opacity ${
+            selected
+              ? 'bg-chartreuse text-cinder'
+              : 'cursor-not-allowed bg-concrete text-mist'
+          }`}
+        >
+          Next
+        </Button>
       </div>
     </div>
   );
