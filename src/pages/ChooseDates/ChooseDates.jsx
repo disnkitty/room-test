@@ -78,15 +78,6 @@ function ChooseDates({ onNext, onDateNextClick, onDateClose  }) {
   return (
     <div className="py-10 flex  w-full items-center justify-center  px-4">
       <div className="flex w-full max-w-[600px] flex-col rounded-2xl bg-white px-8 py-8 min-h-[calc(100vh-80px)] ">
-        <div
-          className="flex justify-center pb-4 -mt-4 cursor-grab active:cursor-grabbing touch-none"
-          onMouseDown={drag.onPointerDown}
-          onMouseUp={drag.onPointerUp}
-          onTouchStart={drag.onPointerDown}
-          onTouchEnd={drag.onPointerUp}
-        >
-          <div className="h-1 w-10 rounded-full bg-concrete" />
-        </div>
         <div className="mb-6 flex items-center justify-between">
           <h2 className="text-2xl font-semibold text-cinder">Choose dates</h2>
           <button
