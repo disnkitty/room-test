@@ -80,7 +80,7 @@ function ChooseTime({ onTimeArrow, selectedDate, onNext, onTimeNextClick, onTime
       
           <Button
             disabled={!selected}
-            onClick={() => {onNext?.(selected); onTimeNextClick?.()  } }
+            onClick={() => {onTimeNextClick?.(selected);  } }
             className={`transition-transform duration-200 hover:scale-105 h-12 w-full rounded-pill text-base font-medium transition-opacity ${
               selected
                 ? 'bg-chartreuse text-cinder'

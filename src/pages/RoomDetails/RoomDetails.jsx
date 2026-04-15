@@ -12,7 +12,8 @@ function RoomDetails() {
   const { rooms } = useRooms();
   const { id } = useParams();
   const [modal, setModal] = useState(null);
-
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedTime, setSelectedTime] = useState(null);
   const room = rooms.find((r) => r.id === Number(id));
 
   return (
@@ -27,7 +28,10 @@ function RoomDetails() {
         <div className="fixed inset-0 z-50 bg-black/60">
           <div className="absolute bottom-0 left-0 right-0">
             <ChooseDates
-              onDateNextClick={() => setModal('time')}
+              onDateNextClick={(date) => {
+                setModal('time');
+                setSelectedDate(date);
+              }}
               onDateClose={() => setModal(null)}
             />
           </div>
@@ -38,9 +42,13 @@ function RoomDetails() {
         <div className="fixed inset-0 z-50 bg-black/60">
           <div className="absolute bottom-0 left-0 right-0">
             <ChooseTime
-              onTimeNextClick={() => setModal('review')}
+              onTimeNextClick={(time) => {
+                setModal('review');
+                setSelectedTime(time);
+              }}
               onTimeClose={() => setModal(null)}
               onTimeArrow={() => setModal('date')}
+              selectedDate={selectedDate}
             />
           </div>
         </div>
@@ -50,6 +58,8 @@ function RoomDetails() {
         <div className="fixed inset-0 z-50 bg-black/60">
           <div className="absolute bottom-0 left-0 right-0">
             <Review
+              selectedDate={selectedDate}
+              selectedTime={selectedTime}
               onBookFreeNow={() => setModal('success')}
               onReviewClose={() => setModal(null)}
               onReviewArrow={() => setModal('time')}
@@ -58,7 +68,7 @@ function RoomDetails() {
         </div>
       )}
 
- {modal === 'success' && (
+      {modal === 'success' && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4">
           <SuccessState onDone={() => setModal(null)} />
         </div>

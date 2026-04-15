@@ -114,7 +114,7 @@ function ChooseDates({ onNext, onDateNextClick, onDateClose  }) {
   
           <button
             disabled={!selected}
-            onClick={() => {onNext?.(selected);  onDateNextClick?.() }}
+            onClick={() => {onDateNextClick?.(selected);   }}
             className={`h-12 w-full transition-transform duration-200 hover:scale-105 rounded-pill text-base font-medium transition-opacity ${
               selected
                 ? 'bg-chartreuse text-cinder'

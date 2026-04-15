@@ -10,8 +10,7 @@ import { useState } from 'react';
 import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
 
 function App() {
-  const [selectedDate, setSelectedDate] = useState(null);
-  const [selectedTime, setSelectedTime] = useState(null);
+  
   return (
     <Router>
       <RoomsProvider>
@@ -43,9 +42,9 @@ function App() {
                 />
               }
             />
-            <Route path="/rooms/:id/success" element={<SuccessState />} />
+            <Route path="/rooms/:id/success" element={<SuccessState />} />*/}
             <Route path="/rooms/:id/error" element={<ErrorState />} />
-             */}
+             
 
 
           </Routes>
