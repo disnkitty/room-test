@@ -3,7 +3,7 @@ import IconStar from '@/ui/IconStar';
 import IconPeople from '@/ui/IconPeople';
 import { useNavigate } from 'react-router-dom';
 
-function ReviewRoomCard({ obj, id, selectedDate, selectedTime }) {
+function ReviewRoomCard({ obj, id, selectedDate, selectedTime, onChangeDateClick, onDetailsClick }) {
   const navigate = useNavigate();
 
   return (
@@ -51,7 +51,7 @@ function ReviewRoomCard({ obj, id, selectedDate, selectedTime }) {
           </div>
           <Button
             type="button"
-            onClick={() => navigate(`/rooms/${id}`)}
+            onClick={onDetailsClick}
             className="text-sm font-medium text-mist items-start shrink-0"
           >
             Details
@@ -72,7 +72,7 @@ function ReviewRoomCard({ obj, id, selectedDate, selectedTime }) {
           </div>
           <Button
             type="button"
-            onClick={() => navigate(-2)}
+            onClick={onChangeDateClick}
             className="text-sm font-medium text-mist items-start shrink-0"
           >
             Change
@@ -88,7 +88,7 @@ function ReviewRoomCard({ obj, id, selectedDate, selectedTime }) {
           </div>
           <Button
             type="button"
-            onClick={() => navigate(`/rooms/${id}`)}
+            onClick={onDetailsClick}
             className="text-sm font-medium text-mist items-start shrink-0"
           >
             Details

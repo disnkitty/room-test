@@ -14,7 +14,7 @@ function RoomDetails() {
   const { id } = useParams();
   const [searchParams] = useSearchParams();
   const [modal, setModal] = useState(
-    () => searchParams.get('startModal') ?? null, // 'date', если пришли из Book
+    () => searchParams.get('startModal') ?? null, 
   );
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
@@ -67,6 +67,9 @@ function RoomDetails() {
               onBookFreeNow={() => setModal('success')}
               onReviewClose={() => setModal(null)}
               onReviewArrow={() => setModal('time')}
+
+              onChangeDateClick={()=> setModal('date')}
+              onDetailsClick={()=> setModal(null)}
             />
           </div>
         </div>

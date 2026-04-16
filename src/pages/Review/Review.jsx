@@ -14,6 +14,8 @@ function Review({
   selectedDate,
   selectedTime,
   onBookFreeNow,
+  onChangeDateClick,
+  onDetailsClick
 }) {
   const { rooms } = useRooms();
   const { id } = useParams();
@@ -28,6 +30,22 @@ function Review({
       onReviewClose();
     }, 300);
   };
+
+
+
+  const handleDetailsChange = () => {
+  setIsClosing(true);
+  setTimeout(() => {
+    onDetailsClick();
+  }, 300);
+};
+
+const handleDateChange = () => {
+  setIsClosing(true);
+  setTimeout(() => {
+    onChangeDateClick();
+  }, 300);
+};
   return (
     <div className="fixed inset-0 z-50 flex flex-col items-end justify-end lg:items-center lg:justify-center lg:p-6">
 <div 
@@ -72,6 +90,8 @@ function Review({
             id={id}
             selectedDate={selectedDate}
             selectedTime={selectedTime}
+            onChangeDateClick={handleDateChange}
+            onDetailsClick={handleDetailsChange}
           />
         </div>
 
