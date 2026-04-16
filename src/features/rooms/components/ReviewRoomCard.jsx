@@ -8,12 +8,11 @@ function ReviewRoomCard({ obj, id, selectedDate, selectedTime, onChangeDateClick
 
   return (
     <div className="flex flex-col gap-5 w-full">
-      <p className="text-xl font-semibold leading-none text-cinder">
-        Review and Booking
-      </p>
+       <h2 className=" text-2xl font-semibold text-cinder">
+Review and booking          </h2>
 
-      <div className="w-full border border-concrete rounded-2xl p-3 flex flex-col gap-2.5">
-        <div className="flex flex-row items-start gap-3 w-full">
+      <div className="w-full border border-concrete rounded-2xl  flex flex-col gap-2.5 ">
+        <div className="flex flex-row items-start gap-5 w-full">
           <article className="relative h-[83px] w-[104px] shrink-0 overflow-hidden rounded-[6px]">
             <img
               src={obj.imageUrl}

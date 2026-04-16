@@ -97,22 +97,27 @@ function ChooseDates({ onNext, onDateNextClick, onDateClose }) {
         <div
           onPointerDown={dragHandle.onPointerDown}
           onClick={handleSmoothClose}
-          className="flex cursor-grab touch-none flex-row justify-center gap-2 py-2 active:cursor-grabbing lg:hidden"
+          className="mt-5 justify-between flex cursor-grab touch-none flex-row justify-center gap-2 py-2 active:cursor-grabbing lg:hidden"
         >
-          <div className="h-1 w-10 rounded-full bg-black"></div>
-          <div className="h-1 w-4 rounded-full bg-concrete"></div>
-          <div className="h-1 w-4 rounded-full bg-concrete"></div>
-          <div className="h-1 w-4 rounded-full bg-concrete"></div>
+          <div></div>
+          <div className='flex  ml-12 gap-2 flex-row justify-between '>
+            <div className="h-1 w-10 rounded-full bg-black"></div>
+            <div className="h-1 w-4 rounded-full bg-concrete"></div>
+            <div className="h-1 w-4 rounded-full bg-concrete"></div>
+          </div>
+          <div>
+            {' '}
+            <button
+              onClick={onDateClose}
+              className="flex mr-2 h-1 w-10 items-center justify-center text-cinder"
+            >
+              <IconCross />
+            </button>
+          </div>
         </div>
 
         <div className="px-8 py-4 flex items-center justify-between flex-shrink-0">
           <h2 className="text-2xl font-semibold text-cinder">Choose dates</h2>
-          <button
-            onClick={onDateClose}
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-concrete text-cinder"
-          >
-            <IconCross />
-          </button>
         </div>
 
         <div className="flex-1 overflow-y-auto px-8">

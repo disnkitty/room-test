@@ -31,10 +31,7 @@ function SuccessState({ onDone, onClose }) {
   onClick={handleSmoothClose}
           className="flex cursor-grab touch-none flex-row justify-center gap-2 py-2 active:cursor-grabbing lg:hidden"
         >
-          <div className="h-1 w-4 rounded-full bg-concrete"></div>
-          <div className="h-1 w-4 rounded-full bg-concrete"></div>
-          <div className="h-1 w-4 rounded-full bg-concrete"></div>
-          <div className="h-1 w-10 rounded-full bg-black"></div>
+       
         </div>
 
         <div className="flex-1 overflow-y-auto px-8 py-8 flex flex-col items-center justify-center gap-8">

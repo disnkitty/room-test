@@ -25,14 +25,14 @@ function ChooseTime({
   const navigate = useNavigate();
   const sheetRef = useRef(null);
   const dragHandle = useDragToClose(onTimeClose, 80, sheetRef);
-  
-const [isClosing, setIsClosing] = useState(false);
-const handleSmoothClose = () => {
-  setIsClosing(true); 
-  setTimeout(() => {
-    onTimeClose();
-  }, 300); 
-};
+
+  const [isClosing, setIsClosing] = useState(false);
+  const handleSmoothClose = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      onTimeClose();
+    }, 300);
+  };
   const formattedDate = selectedDate?.toLocaleDateString('en', {
     month: 'long',
     day: 'numeric',
@@ -41,40 +41,47 @@ const handleSmoothClose = () => {
 
   return (
     <div className="fixed inset-0 z-50 flex flex-col items-end justify-end lg:items-center lg:justify-center lg:p-6">
-<div 
-  className={`absolute inset-0 bg-black/50 transition-opacity duration-300 ${isClosing ? 'opacity-0' : 'opacity-100'}`} 
-  onClick={handleSmoothClose} 
-/>
       <div
-  ref={sheetRef}
-  className={`relative flex h-[810px] w-full max-h-[calc(100vh-42px)] flex-col overflow-hidden rounded-t-2xl bg-white lg:h-[760px] lg:w-[560px] lg:max-h-[calc(100vh-64px)] lg:rounded-2xl transition-transform duration-300 ease-in-out ${
-    isClosing ? 'translate-y-full' : 'translate-y-0'
-  }`}
->
+        className={`absolute inset-0 bg-black/50 transition-opacity duration-300 ${isClosing ? 'opacity-0' : 'opacity-100'}`}
+        onClick={handleSmoothClose}
+      />
+      <div
+        ref={sheetRef}
+        className={`relative flex h-[810px] w-full max-h-[calc(100vh-42px)] flex-col overflow-hidden rounded-t-2xl bg-white lg:h-[760px] lg:w-[560px] lg:max-h-[calc(100vh-64px)] lg:rounded-2xl transition-transform duration-300 ease-in-out ${
+          isClosing ? 'translate-y-full' : 'translate-y-0'
+        }`}
+      >
         <div
           onPointerDown={dragHandle.onPointerDown}
           onClick={handleSmoothClose}
-          className="flex cursor-grab touch-none flex-row justify-center gap-2 py-2 active:cursor-grabbing lg:hidden"
+          className="my-5 mb-4 justify-between flex cursor-grab touch-none flex-row justify-center gap-2 py-2 active:cursor-grabbing lg:hidden"
         >
-          <div className="h-1 w-4 rounded-full bg-concrete"></div>
-          <div className="h-1 w-10 rounded-full bg-black"></div>
-          <div className="h-1 w-4 rounded-full bg-concrete"></div>
-          <div className="h-1 w-4 rounded-full bg-concrete"></div>
-        </div>
-
-        <div className="px-8 py-4 flex items-center justify-between flex-shrink-0">
-          <Button
-            onClick={onTimeArrow}
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-concrete text-cinder"
-          >
-            <IconArrow />
-          </Button>
-          <Button
-            onClick={onTimeClose}
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-concrete text-cinder"
-          >
-            <IconCross />
-          </Button>
+          <div>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                if (onTimeArrow) {
+                  onTimeArrow();
+                }
+              }}
+              className="flex ml-2 h-1 w-10 items-center justify-center text-cinder"
+            >
+              <IconArrow />
+            </button>
+          </div>
+          <div className="flex   gap-2 flex-row justify-between ">
+            <div className="h-1 w-4 rounded-full bg-concrete"></div>
+            <div className="h-1 w-10 rounded-full bg-black"></div>
+            <div className="h-1 w-4 rounded-full bg-concrete"></div>
+          </div>
+          <div>
+            <button
+              onClick={onTimeClose}
+              className="flex mr-2 h-1 w-10 items-center justify-center text-cinder"
+            >
+              <IconCross />
+            </button>
+          </div>
         </div>
 
         <div className="flex-1 overflow-y-auto px-8">
