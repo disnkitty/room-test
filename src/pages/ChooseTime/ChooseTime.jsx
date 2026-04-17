@@ -7,11 +7,13 @@ import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useDragToClose } from '../../useDragToClose';
 
+
 const TIME_SLOTS = [
   '09:00 AM - 11:00 AM',
   '15:00 PM - 17:00 PM',
   '17:30 PM - 19:00 PM',
 ];
+
 
 function ChooseTime({
   onTimeArrow,
@@ -26,6 +28,7 @@ function ChooseTime({
   const sheetRef = useRef(null);
   const dragHandle = useDragToClose(onTimeClose, 80, sheetRef);
 
+
   const [isClosing, setIsClosing] = useState(false);
   const handleSmoothClose = () => {
     setIsClosing(true);
@@ -39,6 +42,7 @@ function ChooseTime({
     year: 'numeric',
   });
 
+
   return (
     <div className="fixed inset-0 z-50 flex flex-col items-end justify-end lg:items-center lg:justify-center lg:p-6">
       <div
@@ -51,43 +55,57 @@ function ChooseTime({
           isClosing ? 'translate-y-full' : 'translate-y-0'
         }`}
       >
-        <div
-          onPointerDown={dragHandle.onPointerDown}
-          onClick={handleSmoothClose}
-          className="my-5 mb-4 justify-between flex cursor-grab touch-none flex-row justify-center gap-2 py-2 active:cursor-grabbing lg:hidden"
-        >
-          <div>
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                if (onTimeArrow) {
-                  onTimeArrow();
-                }
-              }}
-              className="flex ml-2 h-1 w-10 items-center justify-center text-cinder"
-            >
-              <IconArrow />
-            </button>
-          </div>
-          <div className="flex   gap-2 flex-row justify-between ">
-            <div className="h-1 w-4 rounded-full bg-concrete"></div>
-            <div className="h-1 w-10 rounded-full bg-black"></div>
-            <div className="h-1 w-4 rounded-full bg-concrete"></div>
-          </div>
-          <div>
-            <button
-              onClick={onTimeClose}
-              className="flex mr-2 h-1 w-10 items-center justify-center text-cinder"
-            >
-              <IconCross />
-            </button>
-          </div>
-        </div>
+       
+<div
+  onPointerDown={dragHandle.onPointerDown}
+  onClick={handleSmoothClose}
+  className="my-5 mb-4 justify-between flex cursor-grab touch-none flex-row justify-center gap-2 py-2 active:cursor-grabbing lg:hidden"
+>
+  <div>
+    <button
+      onClick={(e) => { e.stopPropagation(); onTimeArrow(); }}
+      className="flex ml-2 h-1 w-10 items-center justify-center text-cinder"
+    >
+      <IconArrow />
+    </button>
+  </div>
+  <div className="flex gap-2 flex-row justify-between">
+    <div className="h-1 w-4 rounded-full bg-gray-400"></div>
+    <div className="h-1 w-10 rounded-full bg-black"></div>
+    <div className="h-1 w-4 rounded-full bg-gray-400"></div>
+  </div>
+  <div>
+    <button
+      onClick={(e) => { e.stopPropagation(); onTimeClose(); }}
+      className="flex mr-2 h-1 w-10 items-center justify-center text-cinder"
+    >
+      <IconCross />
+    </button>
+  </div>
+</div>
 
-        <div className="flex-1 overflow-y-auto px-8">
-          <h2 className="mb-6 text-2xl font-semibold text-cinder">
-            Choose check-in time
-          </h2>
+
+<div className="hidden lg:flex px-8 pt-6 pb-2 items-center justify-between flex-shrink-0">
+  <button
+    onClick={onTimeArrow}
+    className="flex items-center justify-center text-cinder"
+  >
+    <IconArrow />
+  </button>
+  <button
+    onClick={onTimeClose}
+    className="flex items-center justify-center text-cinder"
+  >
+    <IconCross />
+  </button>
+</div>
+
+
+<div className="flex-1 overflow-y-auto px-8">
+  <h2 className="mt-2 mb-6 text-2xl font-semibold text-cinder">
+    Choose check-in time
+  </h2>
+
 
           <div className="mb-4 flex flex-col gap-1">
             <span className="text-base font-medium text-cinder">
@@ -98,7 +116,8 @@ function ChooseTime({
             </span>
           </div>
 
-          <div className="flex flex-col rounded-2xl border border-concrete overflow-hidden mb-6">
+
+          <div className="flex mr- flex-col rounded-2xl border border-concrete overflow-hidden mb-6">
             {TIME_SLOTS.map((slot) => (
               <Button
                 key={slot}
@@ -119,18 +138,20 @@ function ChooseTime({
             ))}
           </div>
 
+
           <Button className="flex h-11 w-full items-center justify-center rounded-pill bg-concrete text-sm font-medium text-cinder mb-6">
             Request custom time
           </Button>
         </div>
 
-        <div className="px-8 py-4 flex-shrink-0 bg-white border-t border-concrete">
+
+        <div className="px-8 py- flex-shrink-0 bg-white border-t border-concrete">
           <Button
             disabled={!selected}
             onClick={() => {
               onTimeNextClick?.(selected);
             }}
-            className={`transition-transform duration-200 hover:scale-105 h-12 w-full rounded-pill text-base font-medium ${
+            className={`mb-4 transition-transform duration-200 hover:scale-105 h-12 w-full rounded-pill text-base font-medium ${
               selected
                 ? 'bg-chartreuse text-cinder'
                 : 'cursor-not-allowed bg-concrete text-mist'
@@ -144,4 +165,8 @@ function ChooseTime({
   );
 }
 
+
 export default ChooseTime;
+
+
+

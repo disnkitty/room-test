@@ -8,7 +8,7 @@ function ReviewRoomCard({ obj, id, selectedDate, selectedTime, onChangeDateClick
 
   return (
     <div className="flex flex-col gap-5 w-full">
-       <h2 className=" text-2xl font-semibold text-cinder">
+       <h2 className="mt-2 text-2xl font-semibold text-cinder">
 Review and booking          </h2>
 
       <div className="w-full border border-concrete rounded-2xl  flex flex-col gap-2.5 ">
