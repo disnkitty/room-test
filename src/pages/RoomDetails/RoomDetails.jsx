@@ -10,6 +10,8 @@ import Footer from './components/Footer';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 function RoomDetails() {
+
+  
   const { rooms } = useRooms();
   const { id } = useParams();
   const [searchParams] = useSearchParams();
@@ -18,9 +20,19 @@ function RoomDetails() {
   );
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
-  const room = rooms.find((r) => r.id === Number(id));
 
+
+if (rooms.length === 0) {
+    return <div>Loading...</div>;
+  }
+const room = rooms.find((r) =>r.id.toString() === id);
+
+
+if (!room) {
+  return <div>Loading...</div>;
+}
   return (
+    
     <div className="relative flex min-h-screen flex-col bg-alabaster">
       <Content obj={room} />
       <Footer
