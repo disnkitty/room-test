@@ -41,22 +41,35 @@ function Review({
     }, 300);
   };
 
-  const saveBooking = async (roomId, date, time) => {
-    try {
-      setBookingError(null);
-      const bookingsRef = ref(database, 'bookings');
-      const newBookingRef = push(bookingsRef);
-      await set(newBookingRef, {
-        roomId,
-        date,
-        time,
-        timestamp: new Date().toISOString(),
-      });
-      console.log('Бронирование сохранено:', { roomId, date, time });
-    } catch (error) {
-      console.error('Ошибка сохранения бронирования:', error);
-    }
-  };
+const saveBooking = async (roomId, date, time) => {
+  try {
+    setBookingError(null);
+    const bookingsRef = ref(database, 'bookings');
+    const newBookingRef = push(bookingsRef);
+
+    const bookingDateTime = new Date(date);
+    const [startTime] = time.split(' - ');   
+    const [timeStr, period] = startTime.split(' ');  
+    const [hours, minutes] = timeStr.split(':');   
+
+    let hour24 = parseInt(hours, 10);
+    if (period === 'PM' && hour24 !== 12) hour24 += 12;  
+    if (period === 'AM' && hour24 === 12) hour24 = 0;
+
+    bookingDateTime.setHours(hour24, parseInt(minutes, 10), 0, 0); 
+
+    await set(newBookingRef, {
+      roomId,
+      date,     
+      time,      
+      timestamp: bookingDateTime.toISOString(),  
+    });
+    console.log('Бронирование сохранено:', { roomId, date, time });
+  } catch (error) {
+    console.error('Ошибка сохранения бронирования:', error);
+    setBookingError('Ошибка при сохранении бронирования');
+  }
+};
   const handleDetailsChange = () => {
     setIsClosing(true);
     setTimeout(() => {
